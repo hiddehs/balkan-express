@@ -22,7 +22,8 @@ export default function Home() {
                         <p className={"mt-2 text-slate-200"}>Haverstraat 32 BIS<br/>3511ND<br/>Utrecht</p>
                     </div>
                     <div className="p-4">
-
+                        <h2>Contact</h2>
+                        <a className="underline">info(at)balkan-expresss.nl</a>
                     </div>
                 </div>
 
