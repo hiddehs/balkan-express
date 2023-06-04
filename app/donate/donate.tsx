@@ -16,7 +16,7 @@ export default function Form () {
       {
         isPending
       }
-      <input type="range" onChange={(e) => setAmount(e.target.value)}
+      <input type="range" onChange={(e) => setAmount(Number.parseInt(e.target.value))}
              value={amount} min={20}
              max={1000} name="amount"/>
       <button
