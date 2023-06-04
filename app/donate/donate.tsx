@@ -9,14 +9,15 @@ export default function Form () {
 
   return (
     <form action={(data) => startTransition(() => handleSubmit(data))}
-          className={`mx-auto p-8 px-12 mt-8 rounded bg-white/50 inline-flex flex-col gap-4  ${isPending
+          className={`mx-auto p-10 mt-8 rounded bg-white/50 inline-flex flex-col gap-4  ${isPending
             ? 'opacity-40'
             : 'opacity-100'} `}>
       <div className="text-4xl font-black text-center">€{amount},-</div>
       {
         isPending
       }
-      <input type="range" onChange={(e) => setAmount(Number.parseInt(e.target.value))}
+      <input type="range"
+             onChange={(e) => setAmount(Number.parseInt(e.target.value))}
              value={amount} min={20}
              max={1000} name="amount"/>
       <button
