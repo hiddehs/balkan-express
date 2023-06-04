@@ -1,12 +1,11 @@
 import Image from "next/image";
-import logoImage from "./logo.png"
+import logoImage from "../public/logo.png"
 
-export default function Home() {
+export default async function Home() {
     return (
         <main className="">
-
             <div className="page flex flex-col items-center justify-between p-24">
-                <Image src={logoImage} alt="Balkan Express" className={"w-[24rem]"} priority={true}/>
+                <Image src="/logo.png" width={215} height={170} alt="Balkan Express" className={"w-[24rem]"} priority={true}/>
             </div>
 
 
@@ -29,5 +28,5 @@ export default function Home() {
 
             </footer>
         </main>
-)
+    )
 }
