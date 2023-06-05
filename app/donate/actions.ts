@@ -23,7 +23,12 @@ export async function handleSubmit (data: FormData) {
     amount: data.get('amount'),
     payment_id: payment.id,
     type: 'default',
-    locale: new Negotiator(headers()).languages()[0],
+    locale: new Negotiator({
+      headers: {
+        'accept-language': headers().
+          get('accept-language') ?? undefined,
+      },
+    }).languages()[0],
   }).select()
   if (error) {
     console.error(error)
