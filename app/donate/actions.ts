@@ -1,20 +1,16 @@
 'use server'
-import createMollieClient from '@mollie/api-client'
 import { redirect } from 'next/navigation'
 import { cookies, headers } from 'next/headers'
-
-if(!process.env.MOLLIE_API_KEY){
-  throw new Error("Please provide Mollie API Key to continue")
-}
-
-const mollieClient = createMollieClient(
-  { apiKey: process.env.MOLLIE_API_KEY.toString() })
+import { supabase } from '@/lib/supabase'
+import Negotiator from 'negotiator'
+import { mollie } from '@/lib/mollie'
 
 export async function handleSubmit (data: FormData) {
 
   const host = headers().get('host')
+
   console.debug('Creating payment')
-  const payment = await mollieClient.payments.create({
+  const payment = await mollie.payments.create({
     amount: {
       value: `${data.get('amount')?.toString() ?? 0}.00`,
       currency: 'EUR',
@@ -22,7 +18,23 @@ export async function handleSubmit (data: FormData) {
     description: `Balkan Express Donation of €${data.get('amount')},-`,
     redirectUrl: `https://${host}/thanks`,
   })
-  cookies().set('order', payment.id)
+  console.debug('Creating donation')
+  const { data: donation, error } = await supabase.from('donations').insert({
+    amount: data.get('amount'),
+    payment_id: payment.id,
+    type: 'default',
+    locale: new Negotiator(headers()).languages()[0],
+  }).select()
+  if (error) {
+    console.error(error)
+    throw new Error(error.message)
+  }
+  if (!donation) {
+    throw new Error('No donation created')
+  }
+  console.info(`Donation ${donation[0].id} created`)
+
+  cookies().set('donation', donation[0].id)
   console.info(`Created payment ${payment.id}`)
   redirect(payment._links.checkout?.href.toString() ??
     'https://balkan-express.nl/#payment_failure')
