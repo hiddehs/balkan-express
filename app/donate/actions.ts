@@ -2,8 +2,8 @@
 import { redirect } from 'next/navigation'
 import { cookies, headers } from 'next/headers'
 import { supabase } from '@/lib/supabase'
-import Negotiator from 'negotiator'
 import { mollie } from '@/lib/mollie'
+import Negotiator from 'negotiator'
 
 export async function handleSubmit (data: FormData) {
 
