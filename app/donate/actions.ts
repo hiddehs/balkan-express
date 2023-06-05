@@ -20,7 +20,7 @@ export async function handleSubmit (data: FormData) {
   })
   console.debug('Creating donation')
   const { data: donation, error } = await supabase.from('donations').insert({
-    amount: data.get('amount'),
+    amount: Number.parseInt(payment.amount.value),
     payment_id: payment.id,
     type: 'default',
     locale: new Negotiator({
@@ -39,7 +39,7 @@ export async function handleSubmit (data: FormData) {
   }
   console.info(`Donation ${donation[0].id} created`)
 
-  cookies().set('donation', donation[0].id)
+  cookies().set('donation', donation[0].id.toString())
   console.info(`Created payment ${payment.id}`)
   redirect(payment._links.checkout?.href.toString() ??
     'https://balkan-express.nl/#payment_failure')
