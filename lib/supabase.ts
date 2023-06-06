@@ -5,4 +5,8 @@ if (!process.env.SUPABASE_URL || !process.env.SUPABASE_KEY) {
   throw new Error('Please provide all envs')
 }
 export const supabase = createClient<Database>(process.env.SUPABASE_URL,
-  process.env.SUPABASE_KEY)
+  process.env.SUPABASE_KEY, {
+    auth: {
+      persistSession: false,
+    },
+  })
