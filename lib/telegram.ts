@@ -7,9 +7,9 @@ if (!process.env.TELEGRAM_BOT) {
 export const telegramBot = new TelegramBot(process.env.TELEGRAM_BOT,
   { polling: false })
 
-
 telegramBot.onText(/\/start/, async (m) => {
-  const reply = await telegramBot.sendMessage(m.chat.id,
+  console.log(`Start messsage from ${m.chat.id}`)
+  await telegramBot.sendMessage(m.chat.id,
     'Welcome to the Tiny Disco Bot 🚙', {
       reply_markup: {
 
@@ -47,6 +47,12 @@ telegramBot.onText(/\/donations/, async (m) => {
   return
 })
 telegramBot.on('callback_query', async (cb) => {
+  console.log(`[${cb.id}] Callback Query`)
   if (cb.data === '/donations') await telegramBot.answerCallbackQuery(cb.id,
     { text: await subscribeToDonations(cb.message ?? null) })
+})
+
+telegramBot.on('message', (m) => {
+  console.log(
+    `[${m.message_id}] Message from ${m.chat.first_name} ${m.chat.id}`)
 })
