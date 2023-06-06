@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { messageHandler, telegramBot } from '@/lib/telegram'
+import { telegramBot } from '@/lib/telegram'
 
 export async function POST (request: Request) {
   telegramBot.processUpdate(await request.json())
