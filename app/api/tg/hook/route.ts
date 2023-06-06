@@ -5,8 +5,9 @@ export async function POST (request: Request) {
   telegramBot.processUpdate(await request.json())
 
   await new Promise(resolve => setTimeout(() => {
+    console.log("one tick?")
     resolve(true)
-  }, 2000))
+  }, 0))
 
   return new NextResponse('OK')
 }
