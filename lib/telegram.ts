@@ -14,7 +14,7 @@ const createTelegramBot = (token: string) => {
     await telegramBot.sendMessage(m.chat.id,
       'Welcome to the Tiny Disco Bot 🚙', {
         reply_markup: {
-
+          remove_keyboard: true,
           inline_keyboard: [
             [
               {
