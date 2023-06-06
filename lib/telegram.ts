@@ -44,12 +44,13 @@ const subscribeToDonations = async (m: TelegramBot.Message | null): Promise<stri
 telegramBot.onText(/\/donations/, async (m) => {
   await telegramBot.sendMessage(m.chat.id, await subscribeToDonations(m),
     { parse_mode: 'Markdown' })
-  return
+  console.log("donation text handler done")
 })
 telegramBot.on('callback_query', async (cb) => {
   console.log(`[${cb.id}] Callback Query`)
   if (cb.data === '/donations') await telegramBot.answerCallbackQuery(cb.id,
     { text: await subscribeToDonations(cb.message ?? null) })
+  console.log("callback_query handler done")
 })
 
 telegramBot.on('message', (m) => {
