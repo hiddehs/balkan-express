@@ -1,4 +1,4 @@
-import TelegramBot, { Message } from 'node-telegram-bot-api'
+import TelegramBot from 'node-telegram-bot-api'
 import { kv } from '@vercel/kv'
 
 if (!process.env.TELEGRAM_BOT) {
@@ -7,26 +7,46 @@ if (!process.env.TELEGRAM_BOT) {
 export const telegramBot = new TelegramBot(process.env.TELEGRAM_BOT,
   { polling: false })
 
-export const messageHandler = async (m: Message) => {
-  if (m.text?.startsWith('/')) {
-    if (m.text?.startsWith('/unsubscribe')) {
-      await kv.srem('tg.subscription.donations', m.chat.id)
-      return
-    }
-    if (m.text?.startsWith('/donations')) {
-      console.log(`Subscribing ${m.chat.id} to donations`)
-      // await kv.del('tg.subscription.donations')
-      if (await kv.sismember('tg.subscription.donations', m.chat.id)) {
-        await telegramBot.sendMessage(m.chat.id, 'Already subscribed')
-        return
-      }
-      await kv.sadd('tg.subscription.donations', m.chat.id)
-      // console.log(await kv.lrange('tg.subscription.donations', 0, -1))
-      await telegramBot.sendMessage(m.chat.id, 'Subscribed to donations 💸')
-      return
-    }
 
-    await telegramBot.sendMessage(m.chat.id, 'I do not recognize that message')
-    return
+telegramBot.onText(/\/start/, async (m) => {
+  const reply = await telegramBot.sendMessage(m.chat.id,
+    'Welcome to the Tiny Disco Bot 🚙', {
+      reply_markup: {
+
+        inline_keyboard: [
+          [
+            {
+              text: 'Sub to Donations',
+              callback_data: '/donations',
+            },
+          ],
+        ],
+      },
+    })
+})
+
+telegramBot.onText(/\/unsubscribe/, async (m) => {
+  console.log(`Unsubscribing ${m.chat.id}`)
+  await kv.srem('tg.subscription.donations', m.chat.id)
+  return
+})
+
+const subscribeToDonations = async (m: TelegramBot.Message | null): Promise<string> => {
+  if (!m) return ''
+  console.log(`Subscribing ${m.chat.id} to donations`)
+  if (await kv.sismember('tg.subscription.donations', m.chat.id)) {
+    return 'Already subscribed'
   }
+  await kv.sadd('tg.subscription.donations', m.chat.id)
+  return 'Subscribed to donations 💸'
 }
+
+telegramBot.onText(/\/donations/, async (m) => {
+  await telegramBot.sendMessage(m.chat.id, await subscribeToDonations(m),
+    { parse_mode: 'Markdown' })
+  return
+})
+telegramBot.on('callback_query', async (cb) => {
+  if (cb.data === '/donations') await telegramBot.answerCallbackQuery(cb.id,
+    { text: await subscribeToDonations(cb.message ?? null) })
+})
