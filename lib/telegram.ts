@@ -1,17 +1,14 @@
-import TelegramBot from 'node-telegram-bot-api'
+import TelegramBot, { Message } from 'node-telegram-bot-api'
 import { kv } from '@vercel/kv'
 
 if (!process.env.TELEGRAM_BOT) {
   throw new Error('Please provide TELEGRAM_TOKEN to continue')
 }
-export const telegramBot = new TelegramBot(process.env.TELEGRAM_BOT, {})
+export const telegramBot = new TelegramBot(process.env.TELEGRAM_BOT,
+  { polling: false })
 
-// telegramBot.comm
-
-telegramBot.on('message', async (m) => {
-
+export const messageHandler = async (m: Message) => {
   if (m.text?.startsWith('/')) {
-
     if (m.text?.startsWith('/unsubscribe')) {
       await kv.srem('tg.subscription.donations', m.chat.id)
       return
@@ -32,4 +29,4 @@ telegramBot.on('message', async (m) => {
     await telegramBot.sendMessage(m.chat.id, 'I do not recognize that message')
     return
   }
-})
+}
