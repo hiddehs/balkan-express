@@ -4,8 +4,6 @@ import { cookies, headers } from 'next/headers'
 import { supabase } from '@/lib/supabase'
 import { mollie } from '@/lib/mollie'
 import Negotiator from 'negotiator'
-import { kv } from '@vercel/kv'
-import { telegramBot } from '@/lib/telegram'
 
 export async function handleSubmit (data: FormData) {
 
