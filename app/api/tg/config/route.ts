@@ -11,6 +11,5 @@ export async function GET (request: Request) {
     { command: 'unsubscribe', description: 'Unsubscribe on all updates' },
     { command: 'donations', description: 'Subscribe on donations' }])
 
-  // telegramBot.processUpdate(await request.json())
   return NextResponse.json(await telegramBot.getWebHookInfo())
 }

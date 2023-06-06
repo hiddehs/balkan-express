@@ -61,6 +61,8 @@ export async function POST (request: Request) {
   await new Promise(resolve => setTimeout(() => {
     resolve(true)
   }, 0))
+  telegramBot.clearTextListeners()
+  telegramBot.removeAllListeners()
 
   return new NextResponse('OK')
 }
