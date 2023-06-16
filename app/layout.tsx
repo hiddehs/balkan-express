@@ -22,7 +22,7 @@ export default function RootLayout ({
 }) {
   return (
     <html lang="en">
-    <body className={`${wilden.variable} ${inter.className} mx-auto`} style={{
+    <body className={`${wilden.variable} ${inter.className} mx-auto bg-no-repeat`} style={{
       backgroundImage: 'url(\'bg.png\')',
       backgroundColor: '#362F86',
     }}>

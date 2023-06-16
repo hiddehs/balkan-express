@@ -12,8 +12,6 @@ export default async function Home () {
 
       <Header className='mb-4'></Header>
 
-
-
       <div className="sections space-y-4">
         <div className="pr-px pl-px">
           <div className='px-12'>
