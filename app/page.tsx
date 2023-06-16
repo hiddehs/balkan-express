@@ -93,11 +93,9 @@ export default async function Home () {
           </div>
         </div>
         <div className="px-4">
-          <div className="flex justify-center">
-            <div className="pr-1.5 pb-2">
-              <div className="h-44 w-64 bg-center bg-cover shadow"/>
-            </div>
-          </div>
+          <Image src="/us.png" alt="Balkan Express" width={290} height={180}
+                 className="mx-auto"
+          />
           <h1
             className="mt-2.5 text-3xl text-center leading-tight tracking-wider">
             BECOME A TOUR SUPPORTER
@@ -136,17 +134,15 @@ export default async function Home () {
               We’ll distribute this for good causes donations to the
               following causes:
             </p>
-            <p className="ml-9">
-              33.4% Humanitarian aid and civil rights in Georgia
-              <br/>
-              33.3% Teelbal Cancer Research in Germany
-              <br/>
-              33.3% Mental health care in Albania
-            </p>
+            <ul className="ml-9">
+              <li>33.4% Humanitarian aid and civil rights in Georgia</li>
+              <li>33.3% Teelbal Cancer Research in Germany</li>
+              <li>33.3% Mental health care in Albania</li>
+            </ul>
           </div>
         </div>
       </div>
-
+<div className="py-4"></div>
     </div>
   )
 }
