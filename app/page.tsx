@@ -11,14 +11,11 @@ export default async function Home () {
 
       <Header className="mb-4"></Header>
 
-      <div className="sections space-y-4 flex flex-col">
+      <div className="sections space-y-6 flex flex-col">
         <div className="px-12">
           <Image src="/top.png" width={300} height={200} alt="Balkan Express"
                  className={'w-full'}
                  priority={true}/>
-        </div>
-        <div className="mt-5 flex justify-center">
-          <div className="h-1.5 w-72 shrink-0 bg-dessert-500/0"/>
         </div>
         <div className="p-6">
           <div
@@ -33,7 +30,7 @@ export default async function Home () {
             AND WE’RE DOING A ROADTRIP from Germany to Georgia*
           </div>
         </div>
-        <div className="mt-3">
+        <div className="">
           <iframe
             src="https://www.google.com/maps/d/embed?mid=1eBvLtDy8atfmT-EqunBurDf_KhfFYaM&ehbc=2E312F"
             width="100%" height="480"></iframe>
@@ -119,16 +116,17 @@ export default async function Home () {
             OUR BIG BOY SPONSORS
           </div>
 
-          logos
-
+          <Image src="/logos.png" width={450} height={40} alt="Balkan Express"
+                 className={'mt-6 w-auto min-w-full'}
+                 style={{minHeight: '35px'}}
+                 />
         </div>
-
-
         <div className="flex justify-center">
           <div
             className="space-y-4 pr-1 leading-normal">
-            <div
-              className="h-44 w-64 bg-center bg-cover shadow"/>
+            <Image src="/sponsor.png" alt="Balkan Express" width={290} height={180}
+                   className="mx-auto"
+                   />
             <h1
               className="ml-4 text-3xl text-center leading-tight tracking-wider">
               €500 TO STOP <br/>
