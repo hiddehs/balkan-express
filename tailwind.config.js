@@ -18,6 +18,7 @@ module.exports = {
           800: '#27216F'
         },
         'dessert': {
+          200: '#FFECCF',
           500: '#F7DBB2',
           DEFAULT: '#F7DBB2',
           800: '#F7DBB2'

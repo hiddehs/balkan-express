@@ -10,7 +10,7 @@ export const Footer: React.FC<FooterProps> = React.memo(
     return (
       <footer
         className="space-y-1 flex flex-col w-full bg-midnight-800 pt-9 pb-10 items-center">
-        <Image src="/foot-logo.png" width={215} height={170}
+        <Image src="/foot-logo.png" width={300} height={170}
                alt="Balkan Express"
                className={'w-[12rem]'}
                priority={true}/>
