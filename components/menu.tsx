@@ -23,7 +23,8 @@ export const Menu: React.FC<Rectangle8Props> = React.memo(
         className="flex w-full justify-center max-w-full lg:w-auto flex-wrap items-center gap-3 lg:rounded-2xl bg-midnight-800 md:px-6 px-2 py-5">
 
         {links.map(l => {
-          const active = pathname.includes(l.href)
+          console.log(pathname)
+          const active = pathname === (l.href)
           return (<Link href={l.href} key={l.href}
                         className={`uppercase hover:text-dessert-200 whitespace-nowrap text-sm text-center font-bold tracking-wider ${active
                           ? 'text-dessert-500'
