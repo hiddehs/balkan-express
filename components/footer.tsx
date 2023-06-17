@@ -34,7 +34,7 @@ export const Footer: React.FC<FooterProps> = React.memo(
           {links.map(l => {
             const active = pathname === (l.href)
             return (<Link href={l.href} key={l.href}
-                          target={l.href.startsWith("http") ? '_blank': null}
+                          target={l.href.startsWith("http") ? '_blank': undefined}
                           className={`uppercase hover:text-dessert-200 leading-none p-2 whitespace-nowrap text-dessert-500 text-lg text-center tracking-wider ${active
                             ? 'text-dessert-500'
                             : 'text-dessert-500/90'}`}>

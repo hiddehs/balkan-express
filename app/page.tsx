@@ -49,8 +49,8 @@ export default async function Home () {
             *The beautiful country, not the U.S. state.
           </p>
           <div className="flex w-full">
-            <Button className={'mx-auto mt-4'} filled={true}>
-              Follow @olofexpress
+            <Button href={'https://instagram.com/balkanexpress2023'} className={'mx-auto mt-4'} filled={true}>
+              Follow @balkanexpress2023
             </Button>
           </div>
         </div>
