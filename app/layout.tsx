@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { Footer } from '@/components/footer'
 import localFont from 'next/font/local'
+import Header from '@/components/header'
 
 const inter = Inter({ subsets: ['latin'] })
 const wilden = localFont({
@@ -11,7 +12,10 @@ const wilden = localFont({
   variable: '--font-wild',
 })
 export const metadata = {
-  title: 'Balkan Express',
+  title: {
+    template: '%s | Balkan Express',
+    default: 'Home',
+  },
   description: 'Follow our Balkan Express Orient Trip',
 }
 
@@ -22,12 +26,24 @@ export default function RootLayout ({
 }) {
   return (
     <html lang="en">
-    <body className={`${wilden.variable} ${inter.className} mx-auto bg-no-repeat bg-fixed`} style={{
-      backgroundImage: 'url(\'bg.png\')',
-      backgroundColor: '#362F86',
-    }}>
+    <body
+      className={`${wilden.variable} ${inter.className} mx-auto bg-no-repeat bg-fixed`}
+      style={{
+        backgroundImage: 'url(\'bg.png\')',
+        backgroundColor: '#362F86',
+      }}>
     <main>
-      {children}
+
+      <div className="page max-w-3xl pt-10 lg:p-24 mx-auto"
+           style={{ maxWidth: '800px' }}>
+
+        <Header className="mb-4"></Header>
+
+        {children}
+      </div>
+      <div className="py-4">
+
+      </div>
     </main>
 
     <Footer></Footer>
