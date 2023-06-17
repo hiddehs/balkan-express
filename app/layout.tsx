@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { Footer } from '@/components/footer'
 import localFont from 'next/font/local'
 import Header from '@/components/header'
+import { Metadata } from 'next'
 
 const inter = Inter({ subsets: ['latin'] })
 const wilden = localFont({
@@ -11,7 +12,7 @@ const wilden = localFont({
   display: 'swap',
   variable: '--font-wild',
 })
-export const metadata = {
+export const metadata: Metadata = {
   title: {
     template: '%s | Balkan Express',
     default: 'Home',
