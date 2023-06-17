@@ -1,23 +1,37 @@
-import React from "react"
+'use client'
+import React from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 interface Rectangle8Props {
   // children: React.ReactNode;
 }
 
+type NavLink = {
+  label: string
+  href: string
+}
 export const Menu: React.FC<Rectangle8Props> = React.memo(
   (props: Rectangle8Props) => {
+    const pathname = usePathname()
+    const links: NavLink[] = [
+      { label: 'The Trip', href: '/' },
+      { label: 'Live Updates', href: '/live' },
+      { label: 'Support Us', href: '/support' }]
     return (
-      <div className="flex w-full justify-center max-w-full lg:w-auto flex-wrap items-center gap-3 lg:rounded-2xl bg-midnight-800 md:px-6 px-2 py-5">
-        <p className="whitespace-nowrap text-'dessert'-500 text-sm text-center font-bold tracking-wider">
-          THE TRIP
-        </p>
-        <p className="whitespace-nowrap text-dessert-500/50 text-sm text-center font-bold tracking-wider">
-          LIVE UPDATES
-        </p>
-        <p className="whitespace-nowrap text-dessert-500/50 text-sm text-center font-bold tracking-wider">
-          SUPPORT US
-        </p>
-        <div className='bg-dessert-500 h-6 border-l'></div>
+      <div
+        className="flex w-full justify-center max-w-full lg:w-auto flex-wrap items-center gap-3 lg:rounded-2xl bg-midnight-800 md:px-6 px-2 py-5">
+
+        {links.map(l => {
+          const active = pathname.includes(l.href)
+          return (<Link href={l.href} key={l.href}
+                        className={`uppercase hover:text-dessert-200 whitespace-nowrap text-sm text-center font-bold tracking-wider ${active
+                          ? 'text-dessert-500'
+                          : 'text-dessert-500/50'}`}>
+            {l.label}
+          </Link>)
+        })}
+        <div className="bg-dessert-500 h-6 border-l"></div>
         <svg
           width="18"
           height="19"
@@ -32,7 +46,7 @@ export const Menu: React.FC<Rectangle8Props> = React.memo(
         </svg>
       </div>
     )
-  }
+  },
 )
 
-Menu.displayName = "Rectangle8"
+Menu.displayName = 'Rectangle8'
