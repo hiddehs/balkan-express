@@ -109,9 +109,9 @@ export default async function Home () {
             OUR BIG BOY SPONSORS
           </div>
 
-          <Image src="/logos.png" width={450} height={40} alt="Balkan Express"
-                 className={'mt-6 w-auto min-w-full'}
-                 style={{ minHeight: '35px' }}
+          <Image src="/logos.png" width={500} height={40} alt="Balkan Express"
+                 className={'mt-6 lg:min-w-full mx-auto w-auto !max-w-[initial]'}
+                 style={{ minHeight: '25px', maxHeight: '30px' }}
           />
         </div>
         <div className="flex justify-center">
@@ -130,7 +130,7 @@ export default async function Home () {
               We’ll distribute this for good causes donations to the
               following causes:
             </p>
-            <ul className="ml-9">
+            <ul className="ml-9 list-disc">
               <li>33.4% Humanitarian aid and civil rights in Georgia</li>
               <li>33.3% Teelbal Cancer Research in Germany</li>
               <li>33.3% Mental health care in Albania</li>
