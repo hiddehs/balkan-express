@@ -7,8 +7,6 @@ export const metadata: Metadata = {
 }
 
 export default async function Home () {
-  'use client'
-
   return (
     <div className="sections space-y-6 flex flex-col">
       <div className="px-12">
