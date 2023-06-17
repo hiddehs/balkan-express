@@ -19,7 +19,7 @@ export default async function Home () {
         </div>
         <div className="p-6">
           <div
-            className="mt-1 font-display px-12 text-3xl text-center leading-tight tracking-wider">
+            className="mt-1 font-display px-8 md:px-12 text-3xl text-center leading-tight tracking-wider">
             We’re MAARTEN <img src="martin.png" className="inline w-7"
                                alt=""/>, HIDDE <img className="inline w-7"
                                                     src="hitmeister.png"
@@ -60,17 +60,12 @@ export default async function Home () {
             SUPPORTING FRIENDS
           </h1>
           <p className="whitespace-nowrap leading-normal overflow-hidden">
+            Jan Paul Beukema
+            Stef van Maarten
             Melanie Kranenburg
-            Melanie Kranenburg
-            Melanie Kranenburg
-            Melanie Kranenburg
-            Melanie Kranenburg
-            Melanie Kranenburg
-            Melanie Kranenburg
-            Melanie Kranenburg
+            Josie Koloskie
           </p>
         </div>
-        <div className="h-6 w-[615px]"/>
         <div className="bg-midnight-500 p-7">
           <div className="">
             <div className="flex justify-center pr-1 pb-2">
@@ -116,15 +111,16 @@ export default async function Home () {
 
           <Image src="/logos.png" width={450} height={40} alt="Balkan Express"
                  className={'mt-6 w-auto min-w-full'}
-                 style={{minHeight: '35px'}}
-                 />
+                 style={{ minHeight: '35px' }}
+          />
         </div>
         <div className="flex justify-center">
           <div
             className="space-y-4 pr-1 leading-normal">
-            <Image src="/sponsor.png" alt="Balkan Express" width={290} height={180}
+            <Image src="/sponsor.png" alt="Balkan Express" width={290}
+                   height={180}
                    className="mx-auto"
-                   />
+            />
             <h1
               className="ml-4 text-3xl text-center leading-tight tracking-wider">
               €500 TO STOP <br/>
@@ -142,7 +138,7 @@ export default async function Home () {
           </div>
         </div>
       </div>
-<div className="py-4"></div>
+      <div className="py-4"></div>
     </div>
   )
 }

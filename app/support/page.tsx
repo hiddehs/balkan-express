@@ -60,10 +60,12 @@ export default async function Home () {
                 SUPPORTING FRIENDS
               </h1>
               <p className="ml-28 whitespace-nowrap leading-normal">
+                Jan Paul Beukema
+                Stef van Maarten
                 Melanie Kranenburg
+                Josie Koloskie
               </p>
             </div>
-            <div className="h-6 w-[615px]" />
           </div>
           <div className="flex justify-center">
             <div className="bg-midnight-500 p-7">
