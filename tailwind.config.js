@@ -7,10 +7,10 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    fontFamily:{
-      display: ['var(--font-wild)'],
-    },
     extend: {
+      fontFamily:{
+        display: ['var(--font-wild)'],
+      },
       colors: {
         'midnight':{
           500: '#362F86',
