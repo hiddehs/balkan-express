@@ -7,7 +7,7 @@ interface Rectangle8Props {
 export const Menu: React.FC<Rectangle8Props> = React.memo(
   (props: Rectangle8Props) => {
     return (
-      <div className="flex w-full justify-center max-w-full lg:w-auto flex-wrap items-center gap-3 lg:rounded-2xl bg-midnight-800 px-6 py-5">
+      <div className="flex w-full justify-center max-w-full lg:w-auto flex-wrap items-center gap-3 lg:rounded-2xl bg-midnight-800 md:px-6 px-2 py-5">
         <p className="whitespace-nowrap text-'dessert'-500 text-sm text-center font-bold tracking-wider">
           THE TRIP
         </p>
