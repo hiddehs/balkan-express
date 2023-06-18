@@ -15,7 +15,7 @@ export async function handleSubmit (data: FormData) {
     },
   }).languages()[0]
   console.debug('Creating payment')
-
+  console.log(data)
 //
 //   --success-url="https://example.com/success?session_id={CHECKOUT_SESSION_ID}" \
 //   --cancel-url="https://example.com/cancel" \
@@ -29,10 +29,11 @@ export async function handleSubmit (data: FormData) {
     mode: 'payment',
     success_url: `https://${host}/thanks?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `https://${host}/support`,
-    customer_email: 'test123@example.com',
+    customer_email: data.get("email")?.toString(),
     line_items: [
       {
-        quantity: 1, price_data: {
+        quantity: 1,
+        price_data: {
           currency: 'eur',
           unit_amount: Number.parseInt(
             `${data.get('amount')?.toString() ?? 0}00`),

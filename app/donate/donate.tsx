@@ -4,11 +4,13 @@ import { useState, useTransition } from 'react'
 import { handleSubmit } from './actions'
 import Image from 'next/image'
 import * as Slider from '@radix-ui/react-slider'
+import { Input } from '@/components/input'
 
 export default function Donate () {
   const max = 500
   const min = 20
   const [amount, setAmount] = useState(min)
+  const [emailVisible, setEmailVisible] = useState(false)
   const [email, setEmail] = useState('')
   const [type, setType] = useState('personal')
   let [isPending, startTransition] = useTransition()
@@ -16,7 +18,7 @@ export default function Donate () {
   return (
     <form action={(data) => startTransition(async () => {
       await handleSubmit(data)
-    })}
+    })} onClick={() => setEmailVisible(true)}
           className={`bg-midnight-800 select-none text-center w-full p-10 mt-8 md:rounded-lg inline-flex flex-col gap-4  ${isPending
             ? 'opacity-40'
             : 'opacity-100'} `}>
@@ -44,13 +46,16 @@ export default function Donate () {
         onValueChange={(e) => setAmount(e[0])}
         className="relative py-10 flex items-center select-none touch-none w-full h-6"
         defaultValue={[20]}
+        value={[amount]}
+        name={'amount'}
         max={max}
         min={min}
         step={1}
       >
         <Slider.Track
           className="bg-midnight-900 relative grow rounded-full h-4">
-          <Slider.Range className="absolute bg-midnight-500 rounded-full h-full"/>
+          <Slider.Range
+            className="absolute bg-midnight-500 rounded-full h-full"/>
         </Slider.Track>
         <Slider.Thumb
           className="block rounded-full hover:bg-dessert-200 cursor-grab p-3 bg-dessert-500 focus:shadow-[0_0_0_5px] focus:shadow-blackA8"
@@ -79,7 +84,12 @@ export default function Donate () {
           BUSINESS
         </div>
       </div>
-
+      <Input name={'email'} required={true}
+             onInput={(e) => setEmail(e.currentTarget.value)} type={'email'}
+             className={`border-dessert-500 border-2 ring-dessert-500 transition duration-100 ${emailVisible
+               ? 'opacity-100'
+               : '!opacity-0 !h-0 overflow-hidden'}`}
+             placeholder={'Your email address'}/>
 
       <button
         disabled={isPending}
