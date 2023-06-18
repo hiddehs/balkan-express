@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { Metadata } from 'next'
 import { Button } from '@/components/button'
 import Friends from '@/components/friends'
+import Donate from '@/app/donate/donate'
 
 export const metadata: Metadata = {
   title: 'Support Us',
@@ -26,10 +27,8 @@ export default async function Support () {
         <div className="w-full flex"><Button href={'/support'}> See support
           levels</Button>
         </div>
-
       </div>
-
-
+      <Donate/>
       <div className="px-4">
         <h1
           className="text-3xl text-center leading-tight tracking-wider">
@@ -103,7 +102,7 @@ export default async function Support () {
         <div
           className="mt-2 px-4 text-center leading-normal">
           <Friends/>
-          </div>
+        </div>
 
       </div>
 

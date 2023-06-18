@@ -3,7 +3,7 @@
 import { useState, useTransition } from 'react'
 import { handleSubmit } from './actions'
 
-export default function Form () {
+export default function Donate () {
   const [amount, setAmount] = useState(20)
   let [isPending, startTransition] = useTransition()
 
