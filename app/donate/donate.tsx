@@ -27,11 +27,11 @@ export default function Donate () {
             ? 'opacity-40'
             : 'opacity-100'} `}>
 
-      <Image src={'/beer.png'} alt={'beer'} className="mx-auto" width={98}
+      <Image src={'/beer.png'} alt={'beer'} className="mx-auto mb-2" width={98}
              height={500}></Image>
 
       <div
-        className="text-4xl font-black text-center font-display text-6xl">€{amount} +
+        className="font-black text-center font-display text-6xl">€{amount}
       </div>
 
       <div className="max-w-sm mx-auto leading-normal my-4 text-lg font-normal">
@@ -100,7 +100,7 @@ export default function Donate () {
 
       <button
         disabled={isPending}
-        className={'shadow hover:bg-dessert-200 transition duration-200 font-display text-2xl md:text-3xl bg-dessert-500 rounded-2xl py-8 px-4 tracking-widest font-bold text-midnight-800 uppercase'}
+        className={'hover:bg-dessert-200 transition duration-200 hover:shadow shadow-lg leading-none shadow-black/60 font-display text-2xl md:text-3xl bg-dessert-500 rounded-2xl py-8 px-4 tracking-widest font-bold text-midnight-800 uppercase'}
         type="submit">
         {isPending ? 'Loading' : 'Donate To The Boys!'}
       </button>
