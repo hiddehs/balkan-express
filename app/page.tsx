@@ -11,7 +11,7 @@ export default async function Home () {
     <div className="sections space-y-6 flex flex-col">
       <div className="px-12">
         <Image src="/top.png" width={300} height={200} alt="Balkan Express"
-               className={'w-full'}
+               className="max-w-xs mx-auto w-full"
                priority={true}/>
       </div>
       <div className="p-6">
