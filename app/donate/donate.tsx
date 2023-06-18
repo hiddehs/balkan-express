@@ -1,18 +1,28 @@
 'use client'
 
-import { useState, useTransition } from 'react'
+import { useEffect, useState, useTransition } from 'react'
 import { handleSubmit } from './actions'
 import Image from 'next/image'
 
 export default function Donate () {
-  const [amount, setAmount] = useState(20)
+  const max = 500
+  const min = 20
+  const [amount, setAmount] = useState(min)
+  const [dragging, setDragging] = useState(false)
+  const [dragStart, setDragStart] = useState(0)
+  const [sliderWidth, setSliderWidth] = useState(0)
   const [type, setType] = useState('personal')
   let [isPending, startTransition] = useTransition()
+
+  useEffect(() => {
+    setSliderWidth(document.querySelector('.slider')?.clientWidth ?? 100)
+  }, [])
 
   return (
     <form action={(data) => startTransition(async () => {
       await handleSubmit(data)
     })}
+          onMouseUp={() => setDragging(false)}
           className={`bg-midnight-800 select-none text-center w-full p-10 mt-8 md:rounded-lg inline-flex flex-col gap-4  ${isPending
             ? 'opacity-40'
             : 'opacity-100'} `}>
@@ -24,10 +34,10 @@ export default function Donate () {
         className="text-4xl font-black text-center font-display text-6xl">€{amount} +
       </div>
 
-      {/*<input type="range"*/}
-      {/*       onChange={(e) => setAmount(Number.parseInt(e.target.value))}*/}
-      {/*       value={amount} min={20}*/}
-      {/*       max={1000} name="amount"/>*/}
+      <input type="range"
+             onChange={(e) => setAmount(Number.parseInt(e.target.value))}
+             value={amount} min={20}
+             max={max} name="amount"/>
 
 
       <div className="max-w-sm mx-auto leading-normal my-4 text-lg font-normal">
@@ -41,9 +51,28 @@ export default function Donate () {
           website! Just scroll down to see it.
         </p>
       </div>
-
-      <div className="slider relative py-6 select-none">
-        <div className="rounded-full hover:bg-dessert-200 duration-100 transition-colors cursor-grab top-1/2 left-0 transform -translate-y-1/2 absolute inline-block p-4 bg-dessert-500">
+      <pre>dragging {dragging}</pre>
+      <div className="slider relative py-6 select-none"
+           onMouseMove={(e) => {
+             if (dragging) {
+               console.log((e.pageX - dragStart) / sliderWidth)
+               setAmount(Math.max(min, (Math.round(((e.pageX - dragStart) /
+                   sliderWidth) *
+                 max))))
+             }
+           }}
+      >
+        {amount}
+        <div onMouseDown={(e) => {
+          e.preventDefault()
+          setDragStart(e.pageX)
+          setDragging(true)
+        }}
+             id="thumb"
+             style={{
+               left: Math.round((amount - min) / max * sliderWidth) + 'px',
+             }}
+             className="rounded-full hover:bg-dessert-200 duration-100 transition-colors cursor-grab top-1/2 left-0 transform -translate-y-1/2 absolute inline-block p-4 bg-dessert-500">
           <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
                xmlns="http://www.w3.org/2000/svg">
             <path
@@ -51,7 +80,8 @@ export default function Donate () {
               fill="#362F86"/>
           </svg>
         </div>
-        <div className="track bg-midnight-900 w-full h-5 rounded-full">
+        <div
+          className="track bg-midnight-900 select-none w-full h-5 rounded-full">
 
         </div>
       </div>
