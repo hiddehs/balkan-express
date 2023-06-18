@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mollie/api-client": "^3.7.0",
     "@stripe/stripe-js": "^1.54.0",
     "@supabase/supabase-js": "^2.25.0",
     "@types/negotiator": "^0.6.1",
