@@ -13,24 +13,30 @@ export interface Database {
         Row: {
           amount: number | null
           created_at: string | null
+          email: string | null
           id: number
           locale: string | null
+          name: string | null
           payment_id: string | null
           type: string | null
         }
         Insert: {
           amount?: number | null
           created_at?: string | null
+          email?: string | null
           id?: number
           locale?: string | null
+          name?: string | null
           payment_id?: string | null
           type?: string | null
         }
         Update: {
           amount?: number | null
           created_at?: string | null
+          email?: string | null
           id?: number
           locale?: string | null
+          name?: string | null
           payment_id?: string | null
           type?: string | null
         }

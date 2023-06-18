@@ -8,7 +8,12 @@ import { stripe } from '@/lib/stripe'
 export async function handleSubmit (data: FormData) {
 
   const host = headers().get('host')
-
+  const locale = new Negotiator({
+    headers: {
+      'accept-language': headers().
+        get('accept-language') ?? undefined,
+    },
+  }).languages()[0]
   console.debug('Creating payment')
 
 //
@@ -24,6 +29,7 @@ export async function handleSubmit (data: FormData) {
     mode: 'payment',
     success_url: `https://${host}/thanks?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `https://${host}/support`,
+    customer_email: 'test123@example.com',
     line_items: [
       {
         quantity: 1, price_data: {
@@ -37,10 +43,10 @@ export async function handleSubmit (data: FormData) {
       },
     ],
   })
-  if(!payment.url){
-    console.log("Failed to create Stripe Checkout Session")
+  if (!payment.url) {
+    console.log('Failed to create Stripe Checkout Session')
     console.debug(payment)
-    return "failed"
+    return 'failed'
   }
 
   // const payment = await mollie.payments.create({
@@ -56,15 +62,12 @@ export async function handleSubmit (data: FormData) {
   // })
   console.debug('Creating donation')
   const { data: donation, error } = await supabase.from('donations').insert({
-    amount: Number.parseInt(data.get('amount')?.toString() ?? "0"),
+    amount: Number.parseInt(data.get('amount')?.toString() ?? '0'),
     payment_id: payment.id,
     type: 'default',
-    locale: new Negotiator({
-      headers: {
-        'accept-language': headers().
-          get('accept-language') ?? undefined,
-      },
-    }).languages()[0],
+    email: payment.customer_email,
+    name: null,
+    locale: locale,
   }).select()
   if (error) {
     console.error(error)
