@@ -8,14 +8,14 @@ export default function Donate () {
   let [isPending, startTransition] = useTransition()
 
   return (
-    <form action={(data) => startTransition(() => handleSubmit(data))}
+    <form action={(data) => startTransition(async () => {
+      await handleSubmit(data)
+    })}
           className={`mx-auto p-10 mt-8 rounded bg-white/50 inline-flex flex-col gap-4  ${isPending
             ? 'opacity-40'
             : 'opacity-100'} `}>
       <div className="text-4xl font-black text-center">€{amount},-</div>
-      {
-        isPending
-      }
+
       <input type="range"
              onChange={(e) => setAmount(Number.parseInt(e.target.value))}
              value={amount} min={20}
