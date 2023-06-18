@@ -8,6 +8,6 @@ body {
     background-blend-mode: darken;
 }
 
-h1, .text-lg {
+h1, .text-lg:not(.font-normal) {
     font-family: var(--font-wild);
 }

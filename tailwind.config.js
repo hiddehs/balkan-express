@@ -1,4 +1,4 @@
-const defaultTheme = require("tailwindcss/defaultTheme")
+const defaultTheme = require('tailwindcss/defaultTheme')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -8,21 +8,22 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily:{
+      fontFamily: {
         display: ['var(--font-wild)'],
       },
       colors: {
-        'midnight':{
+        'midnight': {
           500: '#362F86',
           DEFAULT: '#362F86',
-          800: '#27216F'
+          800: '#27216F',
+          900: '#1E1A56',
         },
         'dessert': {
           200: '#FFECCF',
           500: '#F7DBB2',
           DEFAULT: '#F7DBB2',
-          800: '#F7DBB2'
-        }
+          800: '#F7DBB2',
+        },
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
