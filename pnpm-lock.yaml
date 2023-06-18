@@ -11,6 +11,7 @@ specifiers:
   '@vercel/analytics': ^1.0.1
   '@vercel/kv': ^0.2.1
   autoprefixer: 10.4.14
+  confetti-js: ^0.0.18
   encoding: ^0.1.13
   eslint: 8.42.0
   eslint-config-next: 13.4.4
@@ -35,6 +36,7 @@ dependencies:
   '@vercel/analytics': 1.0.1
   '@vercel/kv': 0.2.1_encoding@0.1.13
   autoprefixer: 10.4.14_postcss@8.4.24
+  confetti-js: 0.0.18
   eslint: 8.42.0
   eslint-config-next: 13.4.4_tizxnkcvjrb4cldxgwq5h3lj5u
   negotiator: 0.6.3
@@ -864,6 +866,10 @@ packages:
 
   /concat-map/0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
+    dev: false
+
+  /confetti-js/0.0.18:
+    resolution: {integrity: sha512-0B7pYmZGBZuBkN32ydjWRpJLfRUT9KZYkQKkC4SGrAsUq0XE2DLY5foCWBXMXXVg7sFKs3qIb+qsDx1eFTeSvA==}
     dev: false
 
   /core-util-is/1.0.2:
