@@ -18,6 +18,7 @@ specifiers:
   encoding: ^0.1.13
   eslint: 8.42.0
   eslint-config-next: 13.4.4
+  js-confetti: ^0.11.0
   lucide-react: ^0.244.0
   negotiator: ^0.6.3
   next: 13.4.4
@@ -48,6 +49,7 @@ dependencies:
   confetti-js: 0.0.18
   eslint: 8.42.0
   eslint-config-next: 13.4.4_tizxnkcvjrb4cldxgwq5h3lj5u
+  js-confetti: 0.11.0
   lucide-react: 0.244.0_react@18.2.0
   negotiator: 0.6.3
   next: 13.4.4_biqbaboplfbrettd7655fr4n2y
@@ -2333,6 +2335,10 @@ packages:
   /jiti/1.18.2:
     resolution: {integrity: sha512-QAdOptna2NYiSSpv0O/BwoHBSmz4YhpzJHyi+fnMRTXFjp7B8i/YG5Z8IfusxB1ufjcD2Sre1F3R+nX3fvy7gg==}
     hasBin: true
+    dev: false
+
+  /js-confetti/0.11.0:
+    resolution: {integrity: sha512-Hc7I3VI4r4H0nq5q/oQK+JJwGoYRYVHK72fGk8E9Ay1dbh+aiZ9yl0yFp1K4oYeq7YFDQAndYChwqLPA3QWQuA==}
     dev: false
 
   /js-tokens/4.0.0:
