@@ -9,8 +9,9 @@ export default async function Support () {
 
   return (
     <div className="sections space-y-6 flex flex-col">
-      <div className="px-4">
-        <Image src="/support-us-header.png" alt="Balkan Express" width={290} height={180}
+      <div className="px-8 py-8">
+        <Image src="/support-us-header.png" alt="Balkan Express" width={290}
+               height={180}
                className="mx-auto w-full max-w-sm"
         />
         <h1
@@ -33,7 +34,7 @@ export default async function Support () {
           className="text-3xl text-center leading-tight tracking-wider">
           BIG BOY SPONSORS </h1>
         <p
-          className="mt-2 text-center leading-normal">
+          className="mt-2 px-4 text-center leading-normal">
           From tents to tools, from euros to euphoria. Thanks to these guys.
         </p>
 
@@ -96,10 +97,10 @@ export default async function Support () {
       <div className="px-4">
 
         <h1
-          className="mt-2.5 text-3xl text-center leading-tight tracking-wider">
+          className="text-3xl text-center leading-tight tracking-wider">
           SUPPORTING FRIENDS </h1>
         <p
-          className="mt-3.5 text-center leading-normal">
+          className="mt-2 px-4 text-center leading-normal">
           Emma van Dijk, Lars Jansen, Julia Bakker, Robin de Vries, Sophie van
           der Meer, Thijs Peters, Anouk Hendriks, Timo van Leeuwen, Sanne de
           Graaf, Sander Kuijpers, Lotte Koning, Daan Vermeulen, Eline van der
