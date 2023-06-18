@@ -11,6 +11,6 @@ export default async function Confetti () {
     jsConfetti.addConfetti()
 
   })
-  return (<div>test</div>)
+  return (<div></div>)
 }
 
