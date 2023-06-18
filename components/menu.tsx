@@ -2,7 +2,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { NavLink } from '@/lib/types'
+import { NavLink } from '@/types/balkan'
 
 interface Rectangle8Props {
   // children: React.ReactNode;

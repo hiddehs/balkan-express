@@ -34,6 +34,28 @@ export interface Database {
           payment_id?: string | null
           type?: string | null
         }
+        Relationships: []
+      }
+      friends: {
+        Row: {
+          created_at: string | null
+          id: number
+          name: string | null
+          order: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: number
+          name?: string | null
+          order?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: number
+          name?: string | null
+          order?: number | null
+        }
+        Relationships: []
       }
     }
     Views: {

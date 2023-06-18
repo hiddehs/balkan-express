@@ -2,7 +2,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { NavLink } from '@/lib/types'
+import { NavLink } from '@/types/balkan'
 import Link from 'next/link'
 
 interface FooterProps {
@@ -29,8 +29,6 @@ export const Footer: React.FC<FooterProps> = React.memo(
                priority={true}/>
         <div
           className="flex max-w-sm text-center justify-center items-center flex-wrap w-full px-5 py-6">
-
-
           {links.map(l => {
             const active = pathname === (l.href)
             return (<Link href={l.href} key={l.href}

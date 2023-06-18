@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Metadata } from 'next'
 import { Button } from '@/components/button'
+import Friends from '@/components/friends'
 
 export const metadata: Metadata = {
   title: 'Support Us',
@@ -54,14 +55,14 @@ export default async function Support () {
                   <linearGradient id="paint0_linear_105_346" x1="17.0926"
                                   y1="-0.335655" x2="0.0352206" y2="31.2534"
                                   gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#FFECCF"/>
-                    <stop offset="1" stop-color="#EAEAEA"/>
+                    <stop stopColor="#FFECCF"/>
+                    <stop offset="1" stopColor="#EAEAEA"/>
                   </linearGradient>
                   <linearGradient id="paint1_linear_105_346" x1="24.3828"
                                   y1="7.1285" x2="6.39521" y2="25.14"
                                   gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#27216F"/>
-                    <stop offset="1" stop-color="#27216F"/>
+                    <stop stopColor="#27216F"/>
+                    <stop offset="1" stopColor="#27216F"/>
                   </linearGradient>
                 </defs>
               </svg>
@@ -99,13 +100,10 @@ export default async function Support () {
         <h1
           className="text-3xl text-center leading-tight tracking-wider">
           SUPPORTING FRIENDS </h1>
-        <p
+        <div
           className="mt-2 px-4 text-center leading-normal">
-          Emma van Dijk, Lars Jansen, Julia Bakker, Robin de Vries, Sophie van
-          der Meer, Thijs Peters, Anouk Hendriks, Timo van Leeuwen, Sanne de
-          Graaf, Sander Kuijpers, Lotte Koning, Daan Vermeulen, Eline van der
-          Velden, Maxime van der Laan, Matthijs Brouwer, Lisa van der Heijden,
-          Jelle de Boer, Fleur Jacobs, Casper Willems, Nina van der Wal. </p>
+          <Friends/>
+          </div>
 
       </div>
 

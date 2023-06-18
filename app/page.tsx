@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Button } from '@/components/button'
 import { Metadata } from 'next'
+import Friends from '@/components/friends'
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -57,12 +58,9 @@ export default async function Home () {
         <h1 className="whitespace-nowrap text-3xl px-4 tracking-wider">
           SUPPORTING FRIENDS
         </h1>
-        <p className="whitespace-nowrap leading-normal overflow-hidden">
-          Jan Paul Beukema
-          Stef van Maarten
-          Melanie Kranenburg
-          Josie Koloskie
-        </p>
+        <div className="whitespace-nowrap leading-normal overflow-hidden">
+         <Friends/>
+        </div>
       </div>
       <div className="bg-midnight-500 p-7">
         <div className="">
