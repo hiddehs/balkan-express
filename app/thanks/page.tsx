@@ -17,7 +17,7 @@ export default async function Page ({
   if (!id) {
     return
   }
-  const session = await stripe.checkout.sessions.retrieve(id)
+  const session = await stripe.checkout.sessions.retrieve(id.toString())
 
   return (
     <div
@@ -27,7 +27,8 @@ export default async function Page ({
              className="mx-auto w-full max-w-sm"
       />
       <h1
-        className="text-3xl mt-4 mb-2 font-bold uppercase tracking-widest">Thank you
+        className="text-3xl mt-4 mb-2 font-bold uppercase tracking-widest">Thank
+        you
         for your donation {session?.customer_email}!</h1>
       <Button href="https://instagram.com/balkanexpress2023">Follow our
         journey!</Button>
