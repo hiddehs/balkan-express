@@ -65,7 +65,7 @@ export async function handleSubmit (data: FormData) {
   const { data: donation, error } = await supabase.from('donations').insert({
     amount: Number.parseInt(data.get('amount')?.toString() ?? '0'),
     payment_id: payment.id,
-    type: 'default',
+    type: data.get("type")?.toString() ?? 'default',
     email: payment.customer_email,
     name: null,
     locale: locale,

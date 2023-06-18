@@ -29,7 +29,7 @@ export default async function Support () {
         </div>
       </div>
       <Donate/>
-      <div className="px-4">
+      <div className="px-4 pt-6">
         <h1
           className="text-3xl text-center leading-tight tracking-wider">
           BIG BOY SPONSORS </h1>

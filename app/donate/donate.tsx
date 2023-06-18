@@ -1,13 +1,13 @@
 'use client'
 
-import { useState, useTransition } from 'react'
+import { useMemo, useState, useTransition } from 'react'
 import { handleSubmit } from './actions'
 import Image from 'next/image'
 import * as Slider from '@radix-ui/react-slider'
 import { Input } from '@/components/input'
 
 export default function Donate () {
-  const max = 500
+  const [max, setMax] = useState(500)
   const min = 20
   const [amount, setAmount] = useState(min)
   const [emailVisible, setEmailVisible] = useState(false)
@@ -15,11 +15,15 @@ export default function Donate () {
   const [type, setType] = useState('personal')
   let [isPending, startTransition] = useTransition()
 
+  const tiers = useMemo<string[]>(() => {
+    return [amount > 50 ? '0' : '1']
+  }, [amount])
+
   return (
     <form action={(data) => startTransition(async () => {
       await handleSubmit(data)
     })} onClick={() => setEmailVisible(true)}
-          className={`bg-midnight-800 select-none text-center w-full p-10 mt-8 md:rounded-lg inline-flex flex-col gap-4  ${isPending
+          className={`bg-midnight-800 select-none text-center w-full p-6 py-10 md:p-10 mt-8 md:rounded-lg inline-flex flex-col gap-4  ${isPending
             ? 'opacity-40'
             : 'opacity-100'} `}>
 
@@ -36,7 +40,6 @@ export default function Donate () {
         </p>
         <br/>
         <p>
-
           We see every name and will cheers on you. 🥰 Your will be name on this
           website! Just scroll down to see it.
         </p>
@@ -72,18 +75,22 @@ export default function Donate () {
       </Slider.Root>
 
       <div
-        className="type-selector select-none max-w-full rounded-2xl inline-flex gap-4 items-center justify-between font-display text-3xl uppercase border-[5px] border-midnight-900 p-4">
+        className="type-selector select-none max-w-full rounded-2xl inline-flex gap-4 items-center justify-between font-display text-2xl md:text-3xl uppercase border-[5px] border-midnight-900 p-2 md:p-4">
         <div onClick={() => setType('personal')}
              className={`p-3 px-6 w-full transition duration-200 cursor-pointer hover:text-dessert-200 ${type ===
              'personal' ? 'text-dessert-500' : 'text-dessert-500/20'}`}>
           PERSONAL
         </div>
-        <div onClick={() => setType('business')}
+        <div onClick={() => {
+          setType('business')
+          setMax(2000)
+        }}
              className={`p-3 px-6 w-full transition duration-200 cursor-pointer hover:text-dessert-200 ${type ===
              'business' ? 'text-dessert-500' : 'text-dessert-500/20'}`}>
           BUSINESS
         </div>
       </div>
+      <input type="hidden" name="type" value={type}/>
       <Input name={'email'} required={true}
              onInput={(e) => setEmail(e.currentTarget.value)} type={'email'}
              className={`border-dessert-500 border-2 ring-dessert-500 transition duration-100 ${emailVisible
@@ -93,7 +100,7 @@ export default function Donate () {
 
       <button
         disabled={isPending}
-        className={'shadow hover:bg-dessert-200 transition duration-200 font-display text-3xl bg-dessert-500 rounded-2xl py-8 px-4 tracking-widest font-bold text-midnight-800 uppercase'}
+        className={'shadow hover:bg-dessert-200 transition duration-200 font-display text-2xl md:text-3xl bg-dessert-500 rounded-2xl py-8 px-4 tracking-widest font-bold text-midnight-800 uppercase'}
         type="submit">
         {isPending ? 'Loading' : 'Donate To The Boys!'}
       </button>
