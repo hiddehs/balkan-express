@@ -30,6 +30,8 @@ const createTelegramBot = (token: string) => {
   telegramBot.onText(/\/unsubscribe/, async (m) => {
     console.log(`Unsubscribing ${m.chat.id}`)
     await kv.srem('tg.subscription.donations', m.chat.id)
+    await telegramBot.sendMessage(m.chat.id, "Unsubscribed",
+      { parse_mode: 'Markdown' })
     return
   })
 
