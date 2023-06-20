@@ -29,9 +29,9 @@ export default async function Home () {
         </div>
       </div>
       <div className="">
-        <iframe
-          src="https://www.google.com/maps/d/embed?mid=1eBvLtDy8atfmT-EqunBurDf_KhfFYaM&ehbc=2E312F"
-          width="100%" height="480"></iframe>
+        {/*<iframe*/}
+        {/*  src="https://www.google.com/maps/d/embed?mid=1eBvLtDy8atfmT-EqunBurDf_KhfFYaM&ehbc=2E312F"*/}
+        {/*  width="100%" height="480"></iframe>*/}
         {/*<div className="h-[438px] w-96 bg-center bg-cover opacity-20"*/}
         {/*     style={{ backgroundImage: 'url(\'/chart.png\')' }}/>*/}
       </div>
@@ -76,7 +76,7 @@ export default async function Home () {
         <p
           className="mt-3.5 text-center leading-normal">
           We succeeded on doing that for 20 minutes because our phone
-          was empty in France. So now we do the same, but for 15 days.
+          was empty in France. So now we do the same, but for 24 days.
         </p>
         <div className="w-full flex">
           <Button href={'/live'}>See our
@@ -93,7 +93,7 @@ export default async function Home () {
         </h1>
         <p
           className="mt-3.5 text-center leading-normal">
-          Support our tiny team! From Montenegro to Istanbul. We’ll
+          Support our tiny team! From the sunny balkan to the Iranian mountains at the border, from Utrecht to Georgia. We’ll
           be sending out postcards and collecting souvenirs.
         </p>
         <div className="w-full flex"><Button href={'/support'}> See support
@@ -124,15 +124,8 @@ export default async function Home () {
             ALL-THINGS-SHITTY
           </h1>
           <p className="ml-1 text-center">
-            We’ll distribute this for good causes donations to the
-            following causes:
+            We’ll distribute this money to good causes along our route, to make a difference for the people we meet.
           </p>
-          <ul className="ml-9 list-disc">
-            <li>33.4% Humanitarian aid and civil rights in Georgia</li>
-            <li>33.3% Teelbal Cancer Research in Germany</li>
-            <li>33.3% Mental health care in Albania</li>
-          </ul>
-        </div>
       </div>
     </div>
   )
