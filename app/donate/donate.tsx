@@ -7,7 +7,7 @@ import * as Slider from '@radix-ui/react-slider'
 import { Input } from '@/components/input'
 
 export default function Donate () {
-  const [max, setMax] = useState(500)
+  const [max, setMax] = useState(400)
   const min = 10
   const [amount, setAmount] = useState(min)
   const [emailVisible, setEmailVisible] = useState(false)
@@ -15,9 +15,122 @@ export default function Donate () {
   const [type, setType] = useState('personal')
   let [isPending, startTransition] = useTransition()
 
-  const tiers = useMemo<string[]>(() => {
-    return [amount > 50 ? '0' : '1']
-  }, [amount])
+  const tiers = useMemo<JSX.Element>(() => {
+
+    if (type === 'business') {
+      if (amount > 999) {
+        return (<div>
+          <h1 className="text-3xl">Gold – €999</h1>
+          <ul>
+            <li>Huge logo on our car (biggest logo, promised!)
+            </li>
+            <li> We name our car after your company, with a pun</li>
+            <li> Your Instagram handle in our bio, the whole trip!</li>
+            <li>
+              5 Instagram posts
+            </li>
+            <li> 5 Instagram stories</li>
+          </ul>
+        </div>)
+      }
+      if (amount > 400) {
+        return (<div>
+          {amount > 600
+            ? 'Tip: also check out our Gold package, starting from €999'
+            : ''}
+          <div className="grid grid-cols-2 text-left">
+            <div className="col-span-1">
+              <h1 className="text-3xl">Influencer Package</h1>
+              <ul>
+                <li>Small logo on our car – 30 x 30 cm</li>
+                <li>If your company does anything that can help our trip, we’ll
+                  make and
+                </li>
+                <li>share videos of it (i.e. cleaning company cleaning our car,
+                  mechanic
+                </li>
+                <li>tools or tent that we use)</li>
+              </ul>
+            </div>
+            <div className="col-span-1">
+              <h1 className="text-3xl">Big Logo Package</h1>
+              <ul>
+                <li>Big logo on our car – 60 x 30 cm</li>
+                <li>We’ll name you with your logo in</li>
+                <li>2 Instagram posts and in</li>
+                <li>3 Instagram stories</li>
+              </ul>
+            </div>
+          </div>
+        </div>)
+      }
+      if (amount > 125) {
+        return (<div>
+
+          <h1 className="text-3xl">Bronze</h1>
+          <p>
+            <ul>
+              <li><b>Small logo</b> on our car 30x30 cm</li>
+              <li>We’ll name you with your logo in
+                2 Instagram posts
+              </li>
+            </ul>
+          </p>
+
+        </div>)
+      }
+      return (<div>
+        Our first business package is Bronze, starting from €125
+      </div>)
+    }
+    return (<div><p>
+      You will get: eternal thanks!
+    </p>
+      <br/>
+      <p>
+        We see every name and will cheers on you. 🥰 Your will be name on this
+        website! Just scroll down to see it.
+      </p>
+
+
+      <p>
+        1. Love you! €10
+        You will get: eternal thanks! We see every name and will cheers on you.
+        🥰
+
+        2. Feed us and get a postcard! €25
+        From balkan beans to a delicious dolma. This will be the average cost of
+        a meal.
+
+        You will get:
+        - 🥘 A picture of us, eating your meal.
+        - 🔒 Access to our secret instagram for behind the scenes reels & videos
+        - 📮A physical postcard from a country on our route
+        e
+        3. Feed us and our car! €69
+        Slurpy slurp! We will sticker your name (or anything you wish) on our
+        car.
+
+        - 🚐 Your name on the car
+        - 🥘 A picture of us, eating your meal.
+        - 🔒 Access to our secret instagram for behind the scenes reels & videos
+        - 📮A physical postcard from a country on our route
+        - ⛽️ A picture of us and the gas station.
+        4. Become an all-star! €150+
+
+        🙌 The postcard and behind the scenes but we’ll also we’ll FaceTime you
+        during the trip with updates and bring back a one-off unique souvenir.
+        5. Become a legend! €250+
+
+        ⭐️ All of the above. Plus we’ll return with 5 souvenirs. Wine from
+        Georgia (Saperavi), Turkish Tea (Caykur), Albanian Fig Jam, German
+        Marzipan and Croatian Olive Oil..
+
+      </p>
+    </div>)
+
+    // return [amount > 50 ? '0' : '1']
+  }, [type, amount])
 
   return (
     <form action={(data) => startTransition(async () => {
@@ -34,15 +147,8 @@ export default function Donate () {
         className="font-black text-center font-display text-6xl">€{amount}
       </div>
 
-      <div className="max-w-sm mx-auto leading-normal my-4 text-lg font-normal">
-        <p>
-          You will get: eternal thanks!
-        </p>
-        <br/>
-        <p>
-          We see every name and will cheers on you. 🥰 Your will be name on this
-          website! Just scroll down to see it.
-        </p>
+      <div className="mx-auto leading-normal my-4 text-lg font-normal">
+        {tiers}
       </div>
 
       <Slider.Root
@@ -83,7 +189,7 @@ export default function Donate () {
         </div>
         <div onClick={() => {
           setType('business')
-          setMax(2000)
+          setMax(1200)
         }}
              className={`p-3 px-6 w-full transition duration-200 cursor-pointer hover:text-dessert-200 ${type ===
              'business' ? 'text-dessert-500' : 'text-dessert-500/20'}`}>
