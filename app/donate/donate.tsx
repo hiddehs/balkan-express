@@ -8,7 +8,7 @@ import { Input } from '@/components/input'
 
 export default function Donate () {
   const [max, setMax] = useState(500)
-  const min = 20
+  const min = 10
   const [amount, setAmount] = useState(min)
   const [emailVisible, setEmailVisible] = useState(false)
   const [email, setEmail] = useState('')
