@@ -207,10 +207,6 @@ export default function Donate () {
         className="font-black text-center font-display text-6xl">€{amount}
       </div>
 
-      <div
-        className="mx-auto prose prose-h1:text-3xl prose-invert text-dessert-500 prose-headings:text-dessert-500 prose-ul:list-inside leading-normal my-4 text-lg font-normal">
-        {tiers}
-      </div>
 
       <Slider.Root
         onValueChange={(e) => setAmount(e[0])}
@@ -241,6 +237,10 @@ export default function Donate () {
         </Slider.Thumb>
       </Slider.Root>
 
+      <div
+        className="mx-auto prose prose-h1:text-3xl prose-invert text-dessert-500 prose-headings:text-dessert-500 prose-ul:list-inside leading-normal my-4 text-lg font-normal">
+        {tiers}
+      </div>
       <div
         className="type-selector select-none max-w-full rounded-2xl inline-flex gap-4 items-center justify-between font-display text-2xl md:text-3xl uppercase border-[5px] border-midnight-900 p-2 md:p-4">
         <div onClick={() => setType('personal')}
