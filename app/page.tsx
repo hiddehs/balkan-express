@@ -59,7 +59,7 @@ export default async function Home () {
           SUPPORTING FRIENDS
         </h1>
         <div className="whitespace-nowrap leading-normal overflow-hidden">
-         <Friends/>
+          <Friends/>
         </div>
       </div>
       <div className="bg-midnight-500 p-7">
@@ -93,7 +93,8 @@ export default async function Home () {
         </h1>
         <p
           className="mt-3.5 text-center leading-normal">
-          Support our tiny team! From the sunny balkan to the Iranian mountains at the border, from Utrecht to Georgia. We’ll
+          Support our tiny team! From the sunny balkan to the Iranian mountains
+          at the border, from Utrecht to Georgia. We’ll
           be sending out postcards and collecting souvenirs.
         </p>
         <div className="w-full flex"><Button href={'/support'}> See support
@@ -124,8 +125,10 @@ export default async function Home () {
             ALL-THINGS-SHITTY
           </h1>
           <p className="ml-1 text-center">
-            We’ll distribute this money to good causes along our route, to make a difference for the people we meet.
+            We’ll distribute this money to good causes along our route, to make
+            a difference for the people we meet.
           </p>
+        </div>
       </div>
     </div>
   )
