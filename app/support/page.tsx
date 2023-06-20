@@ -91,7 +91,7 @@ export default async function Support () {
               </svg>
             </div>
             <p className="text-dessert-500 leading-normal">
-              Digital without code, No Code to be announced
+              Digital without code, No Code to be announced soon
             </p>
           </div>
         </div>
