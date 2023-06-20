@@ -4,7 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 
 const getFeed = async () => {
-  const res = await fetch('https://feeds.behold.so/t3Ih5iyZ3Xbz7YkdRvu2')
+  const res = await fetch('https://feeds.behold.so/hUB4pg1sP2x7HiXNn7ht')
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data')
