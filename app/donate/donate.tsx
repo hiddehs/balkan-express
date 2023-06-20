@@ -20,7 +20,7 @@ export default function Donate () {
     if (type === 'business') {
       if (amount > 999) {
         return (<div>
-          <h1 className="text-3xl">Gold – €999</h1>
+          <h1 className="text-3xl">Gold</h1>
           <ul>
             <li>Huge logo on our car (biggest logo, promised!)
             </li>
@@ -36,17 +36,19 @@ export default function Donate () {
       if (amount > 400) {
         return (<div>
           {amount > 600
-            ? 'Tip: also check out our Gold package, starting from €999'
+            ? <div
+              className="bg-dessert-200/20 inline-block px-4 py-2 rounded text-base mb-4">Tip:
+              also
+              check out our Gold package, starting from €999</div>
             : ''}
-          <div className="grid grid-cols-2 text-left">
+          <div className="grid md:grid-cols-2 gap-4">
             <div className="col-span-1">
-              <h1 className="text-3xl">Influencer Package</h1>
+              <h1 className="text-3xl mb-4">Influencer Package</h1>
               <ul>
-                <li>Small logo on our car – 30 x 30 cm</li>
-                <li>If your company does anything that can help our trip, we’ll
-                  make and
-                </li>
-                <li>share videos of it (i.e. cleaning company cleaning our car,
+                <li><b>Small logo</b> on our car – 30 x 30 cm</li>
+                <li>If your company does anything that can help our trip, <b>we’ll
+                  make and share</b> videos of it (i.e. cleaning company
+                  cleaning our car,
                   mechanic
                 </li>
                 <li>tools or tent that we use)</li>
@@ -55,7 +57,7 @@ export default function Donate () {
             <div className="col-span-1">
               <h1 className="text-3xl">Big Logo Package</h1>
               <ul>
-                <li>Big logo on our car – 60 x 30 cm</li>
+                <li><b>Big logo</b> on our car – 60 x 30 cm</li>
                 <li>We’ll name you with your logo in</li>
                 <li>2 Instagram posts and in</li>
                 <li>3 Instagram stories</li>
@@ -83,48 +85,106 @@ export default function Donate () {
         Our first business package is Bronze, starting from €125
       </div>)
     }
-    return (<div><p>
-      You will get: eternal thanks!
-    </p>
-      <br/>
+
+    if (amount < 25) {
+
+      return (
+        <div>
+          <h1>
+            You will get: eternal thanks!
+          </h1>  <p>
+          We see every name and will cheers on you. 🥰 Your will be name on this
+          website! Just scroll down to see it.
+        </p>
+        </div>
+      )
+    }
+    if (amount < 69) {
+      return (
+        <div>
+
+          <h1>
+            Feed us and get a postcard! €25</h1>
+          <p>
+            From balkan beans to a delicious dolma. This will be the average
+            cost
+            of
+            a meal.
+            You will get:
+          </p>
+          <ul>
+            <li>🥘 A picture of us, eating your meal.</li>
+            <li>🔒 Access to our secret instagram for behind the scenes reels &
+              videos
+            </li>
+            <li>📮A physical postcard from a country on our route</li>
+          </ul>
+        </div>
+      )
+    }
+    if (amount < 150) {
+      return (<div>
+
+        <h1>
+          Feed us and our car! €69
+        </h1>
+
+        <p>
+          Slurpy slurp! We will sticker your name (or anything you wish) on our
+          car.
+          <ul>
+
+            <li>🚐 Your name on the car</li>
+            <li>🥘 A picture of us, eating your meal.</li>
+            <li>🔒 Access to our secret instagram for behind the scenes reels &
+              videos
+            </li>
+            <li>📮A physical postcard from a country on our route</li>
+            <li>⛽️ A picture of us and the gas station.</li>
+          </ul>
+        </p>
+      </div>)
+    }
+    if (amount < 250) {
+      return (<div>
+        <h1>
+          Become an all-star! €150+
+        </h1>
+        <p>
+          🙌 The postcard and behind the scenes but we’ll also we’ll FaceTime you
+          during the trip with updates and bring back a one-off unique souvenir.
+        </p>
+        <ul>
+
+          <li>🚐 Your name on the car</li>
+          <li>🥘 A picture of us, eating your meal.</li>
+          <li>🔒 Access to our secret instagram for behind the scenes reels &
+            videos
+          </li>
+          <li>📮A physical postcard from a country on our route</li>
+          <li>⛽️ A picture of us and the gas station.</li>
+        </ul>
+      </div>)
+    }
+    return (<div>
+      <h1>
+        Become a legend! €250+
+      </h1>
       <p>
-        We see every name and will cheers on you. 🥰 Your will be name on this
-        website! Just scroll down to see it.
-      </p>
-
-
-      <p>
-        1. Love you! €10
-        You will get: eternal thanks! We see every name and will cheers on you.
-        🥰
-
-        2. Feed us and get a postcard! €25
-        From balkan beans to a delicious dolma. This will be the average cost of
-        a meal.
-
-        You will get:
-        - 🥘 A picture of us, eating your meal.
-        - 🔒 Access to our secret instagram for behind the scenes reels & videos
-        - 📮A physical postcard from a country on our route
-        e
-        3. Feed us and our car! €69
-        Slurpy slurp! We will sticker your name (or anything you wish) on our
-        car.
-
-        - 🚐 Your name on the car
-        - 🥘 A picture of us, eating your meal.
-        - 🔒 Access to our secret instagram for behind the scenes reels & videos
-        - 📮A physical postcard from a country on our route
-        - ⛽️ A picture of us and the gas station.
-        4. Become an all-star! €150+
-
-        🙌 The postcard and behind the scenes but we’ll also we’ll FaceTime you
-        during the trip with updates and bring back a one-off unique souvenir.
-        5. Become a legend! €250+
 
         ⭐️ All of the above. Plus we’ll return with 5 souvenirs. Wine from
         Georgia (Saperavi), Turkish Tea (Caykur), Albanian Fig Jam, German
         Marzipan and Croatian Olive Oil..
+        <ul>
+
+          <li>🚐 Your name on the car</li>
+          <li>🥘 A picture of us, eating your meal.</li>
+          <li>🔒 Access to our secret instagram for behind the scenes reels &
+            videos
+          </li>
+          <li>📮A physical postcard from a country on our route</li>
+          <li>⛽️ A picture of us and the gas station.</li>
+        </ul>
 
       </p>
     </div>)
@@ -147,7 +207,8 @@ export default function Donate () {
         className="font-black text-center font-display text-6xl">€{amount}
       </div>
 
-      <div className="mx-auto leading-normal my-4 text-lg font-normal">
+      <div
+        className="mx-auto prose prose-h1:text-3xl prose-invert text-dessert-500 prose-headings:text-dessert-500 prose-ul:list-inside leading-normal my-4 text-lg font-normal">
         {tiers}
       </div>
 

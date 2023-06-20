@@ -12,6 +12,7 @@
     "@radix-ui/react-slider": "^1.1.2",
     "@stripe/stripe-js": "^1.54.0",
     "@supabase/supabase-js": "^2.25.0",
+    "@tailwindcss/typography": "^0.5.9",
     "@types/negotiator": "^0.6.1",
     "@types/node": "20.2.5",
     "@types/react": "18.2.8",
