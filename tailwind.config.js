@@ -8,6 +8,13 @@ module.exports = {
   ],
   theme: {
     extend: {
+      typography: ({ theme }) => ({
+        defaultTheme: {
+          css: {
+            '--tw-prose-invert-bullets': "#F7DBB2",
+          },
+        },
+      }),
       fontFamily: {
         display: ['var(--font-wild)'],
       },
@@ -32,5 +39,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
