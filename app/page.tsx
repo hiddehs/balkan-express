@@ -108,7 +108,7 @@ export default async function Home () {
         </div>
 
         <Image src="/logos.png" width={500} height={40} alt="Balkan Express"
-               className={'mt-6 md:min-w-fit min-w-full mx-auto w-auto !max-w-[initial]'}
+               className={'mt-6 md:min-w-fit mx-auto w-auto !max-w-[initial]'}
                style={{ minHeight: '25px', maxHeight: '30px' }}
         />
       </div>
