@@ -11,3 +11,7 @@ body {
 h1, .text-lg:not(.font-normal) {
     font-family: var(--font-wild);
 }
+ul {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
