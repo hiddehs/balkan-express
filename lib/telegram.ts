@@ -1,10 +1,12 @@
 import TelegramBot from 'node-telegram-bot-api'
 import { kv } from '@vercel/kv'
 import { supabase } from '@/lib/supabase'
+import EventEmitter from 'eventemitter3'
 
 if (!process.env.TELEGRAM_BOT) {
   throw new Error('Please provide TELEGRAM_TOKEN to continue')
 }
+const emitter = new EventEmitter()
 
 const createTelegramBot = (token: string) => {
   console.log('Creating Telegram Bot')
@@ -35,7 +37,8 @@ const createTelegramBot = (token: string) => {
   telegramBot.onText(/\/unsubscribe/, async (m) => {
     console.log(`Unsubscribing ${m.chat.id}`)
     await kv.srem('tg.subscription.donations', m.chat.id)
-    await telegramBot.sendMessage(m.chat.id, `Unsubscribed ${m.from?.first_name ?? m.from?.username}`,
+    await telegramBot.sendMessage(m.chat.id,
+      `Unsubscribed ${m.from?.first_name ?? m.from?.username}`,
       { parse_mode: 'Markdown' })
     return
   })
@@ -70,21 +73,22 @@ const createTelegramBot = (token: string) => {
       console.log(cb)
       await telegramBot.answerCallbackQuery(cb.id,
         { text: 'Lets make friends' })
-      if(!cb.message?.chat.id) return
+      if (!cb.message?.chat.id) return
       const message = await telegramBot.sendMessage(cb.message?.chat.id,
         'What is the name of our new friend?', {
           reply_markup: {
             force_reply: true,
-            selective: false
+            selective: false,
           },
         })
     }
+    emitter.emit('handle')
   })
 
   telegramBot.on('message', async (m) => {
     console.log(
       `[${m.message_id}] Message from ${m.chat.first_name} ${m.chat.id}`)
-    if (m.reply_to_message?.text === "What is the name of our new friend?") {
+    if (m.reply_to_message?.text === 'What is the name of our new friend?') {
       console.log(`Adding new friend! ${m.text}`)
       await supabase.from('friends').insert({ name: m.text })
       await telegramBot.sendMessage(
@@ -94,10 +98,12 @@ const createTelegramBot = (token: string) => {
           reply_to_message_id: m.message_id,
         })
     }
+    emitter.emit('handle')
   })
 
   return telegramBot
 }
 export const telegramBot = createTelegramBot(process.env.TELEGRAM_BOT)
+export const botEmitter = emitter
 
 
