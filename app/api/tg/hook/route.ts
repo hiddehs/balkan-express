@@ -1,19 +1,23 @@
 import { NextResponse } from 'next/server'
 import { botEmitter, telegramBot } from '@/lib/telegram'
+import { clearTimeout } from 'timers'
 
-export const dynamic = 'force-dynamic';
-export const dynamicParams = true;
+export const dynamic = 'force-dynamic'
+export const dynamicParams = true
 
 export async function POST (request: Request) {
-  telegramBot.processUpdate(await request.json())
-  botEmitter.on("handled", ()=>{
-    console.log("Handled something?")
-  })
-  // forever done with vercel cpu event cycles
-  await new Promise(resolve=>{
-    setTimeout(()=>{
+  await new Promise(async resolve => {
+    // forever done with vercel cpu event cycles
+    const timeout = setTimeout(() => {
+      console.warn("Bot process update timeout")
       resolve(true)
-    }, 50)
+    }, 1000) // prevent dead request
+    botEmitter.on('handle', () => {
+      console.log("Bot update handle complete")
+      clearTimeout(timeout)
+      resolve(true)
+    })
+    telegramBot.processUpdate(await request.json())
   })
   return new NextResponse('OK')
 }

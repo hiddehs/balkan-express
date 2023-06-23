@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 
 export async function GET (request: Request) {
   await telegramBot.setWebHook(request.url.includes('localhost')
-    ? 'https://79d2-217-123-13-172.eu.ngrok.io/api/tg/hook'
+    ? 'https://c7a1-217-123-13-172.eu.ngrok.io/api/tg/hook'
     : request.url.replace('config', 'hook'), {})
 
   await telegramBot.setMyCommands([

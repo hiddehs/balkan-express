@@ -32,6 +32,8 @@ const createTelegramBot = (token: string) => {
           ],
         },
       })
+    emitter.emit('handle')
+
   })
 
   telegramBot.onText(/\/unsubscribe/, async (m) => {
@@ -40,16 +42,19 @@ const createTelegramBot = (token: string) => {
     await telegramBot.sendMessage(m.chat.id,
       `Unsubscribed ${m.from?.first_name ?? m.from?.username}`,
       { parse_mode: 'Markdown' })
+    emitter.emit('handle')
+
     return
   })
 
   const subscribeToDonations = async (m: TelegramBot.Message | null): Promise<string> => {
     if (!m) return ''
-    console.log(`Subscribing ${m.chat.id} to donations`)
+    console.log(`Subscribing ${m.chat.id} to donations and friends`)
     if (await kv.sismember('tg.subscription.donations', m.chat.id)) {
       return 'Already subscribed'
     }
     kv.sadd('tg.subscription.donations', m.chat.id)
+    kv.sadd('tg.subscription.friends', m.chat.id)
     return `${m.chat.first_name} is now subscribed to donations 💸`
   }
 
@@ -57,6 +62,8 @@ const createTelegramBot = (token: string) => {
     await telegramBot.sendMessage(m.chat.id, await subscribeToDonations(m),
       { parse_mode: 'Markdown' })
     console.log('donation text handler done')
+    emitter.emit('handle')
+
   })
   telegramBot.onText(/\/friends/, async (m) => {
     const friends = (await supabase.from('friends').select())
@@ -64,6 +71,8 @@ const createTelegramBot = (token: string) => {
       '*These ppl are our friends:*\n' +
       friends.data?.map(f => `#${f.id} ${f.name}`).join('\n') ?? 'no friends',
       { parse_mode: 'Markdown' })
+    emitter.emit('handle')
+
   })
   telegramBot.on('callback_query', async (cb) => {
     console.log(`[${cb.id}] Callback Query`)
@@ -91,12 +100,20 @@ const createTelegramBot = (token: string) => {
     if (m.reply_to_message?.text === 'What is the name of our new friend?') {
       console.log(`Adding new friend! ${m.text}`)
       await supabase.from('friends').insert({ name: m.text })
+
+      const chats = await kv.smembers('tg.subscription.friends')
       await telegramBot.sendMessage(
         m.chat.id,
         `Friend ${m.text} is now part of the club!`,
         {
           reply_to_message_id: m.message_id,
         })
+      for (const chatId of chats) {
+        await telegramBot.sendMessage(
+          chatId,
+          `Friend ${m.text} is now part of the club!`,
+        )
+      }
     }
     emitter.emit('handle')
   })
