@@ -80,7 +80,7 @@ export default async function Home () {
         </p>
         <div className="w-full flex">
           <Button href={'/live'}>See our
-            iternary</Button>
+            itinerary</Button>
         </div>
       </div>
       <div className="px-4">
