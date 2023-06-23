@@ -8,7 +8,7 @@ import { Input } from '@/components/input'
 
 export default function Donate () {
   const [max, setMax] = useState(400)
-  const min = 10
+  const [min, setMin] = useState(10)
   const [amount, setAmount] = useState(min)
   const [emailVisible, setEmailVisible] = useState(false)
   const [email, setEmail] = useState('')
@@ -249,6 +249,7 @@ export default function Donate () {
         <div onClick={() => {
           setType('business')
           setMax(1200)
+          setMin(149)
         }}
              className={`p-3 px-6 w-full transition duration-200 cursor-pointer hover:text-dessert-200 ${type ===
              'business' ? 'text-dessert-500' : 'text-dessert-500/20'}`}>
