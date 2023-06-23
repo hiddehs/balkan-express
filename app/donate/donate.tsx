@@ -104,7 +104,7 @@ export default function Donate () {
         <div>
 
           <h1>
-            Feed us and get a postcard! €25</h1>
+            Get a postcard! €15+</h1>
           <p>
             From balkan beans to a delicious dolma. This will be the average
             cost
@@ -126,7 +126,7 @@ export default function Donate () {
       return (<div>
 
         <h1>
-          Feed us and our car! €69
+          Your name on our car! €35+
         </h1>
 
         <p>
