@@ -18,14 +18,14 @@ export default function Donate () {
   const tiers = useMemo<JSX.Element>(() => {
 
     if (type === 'business') {
-      if (amount > 999) {
+      if (amount > 499) {
         return (<div>
           <h1 className="text-3xl">Gold</h1>
           <ul>
             <li>Huge logo on our car (biggest logo, promised!)
             </li>
-            <li> We name our car after your company, with a pun</li>
-            <li> Your Instagram handle in our bio, the whole trip!</li>
+            <li> We <b>name our car</b> after your company, with a pun</li>
+            <li> Your Instagram <b>handle in our bio</b>, the whole trip!</li>
             <li>
               5 Instagram posts
             </li>
@@ -33,32 +33,30 @@ export default function Donate () {
           </ul>
         </div>)
       }
-      if (amount > 400) {
+      if (amount > 248) {
         return (<div>
-          {amount > 600
+          {amount > 300
             ? <div
               className="bg-dessert-200/20 inline-block px-4 py-2 rounded text-base mb-4">Tip:
               also
-              check out our Gold package, starting from €999</div>
+              check out our Gold package, starting from €499</div>
             : ''}
           <div className="grid md:grid-cols-2 gap-4">
             <div className="col-span-1">
               <h1 className="text-3xl mb-4">Influencer Package</h1>
               <ul>
-                <li><b>Small logo</b> on our car – 30 x 30 cm</li>
+                <li><b>Medium logo</b> on our car – 25 x 25 cm</li>
                 <li>If your company does anything that can help our trip, <b>we’ll
                   make and share</b> videos of it (i.e. cleaning company
                   cleaning our car,
-                  mechanic
-                </li>
-                <li>tools or tent that we use)</li>
+                  mechanic tools or tent that we use)</li>
               </ul>
             </div>
             <div className="col-span-1">
               <h1 className="text-3xl">Big Logo Package</h1>
               <ul>
-                <li><b>Big logo</b> on our car – 60 x 30 cm</li>
-                <li>We’ll name you with your logo in</li>
+                <li><b>Big logo</b> on our car – 50 x 50 cm</li>
+                <li>We’ll name you with your logo in:</li>
                 <li>2 Instagram posts and in</li>
                 <li>3 Instagram stories</li>
               </ul>
@@ -66,13 +64,13 @@ export default function Donate () {
           </div>
         </div>)
       }
-      if (amount > 125) {
+      if (amount > 148) {
         return (<div>
 
           <h1 className="text-3xl">Bronze</h1>
           <p>
             <ul>
-              <li><b>Small logo</b> on our car 30x30 cm</li>
+              <li><b>Small logo</b> on our car 25x25 cm</li>
               <li>We’ll name you with your logo in
                 2 Instagram posts
               </li>
