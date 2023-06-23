@@ -10,7 +10,7 @@ export async function POST (request: Request) {
   await new Promise(resolve=>{
     setTimeout(()=>{
       resolve(true)
-    }, 10)
+    }, 50)
   })
   return new NextResponse('OK')
 }
