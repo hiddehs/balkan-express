@@ -7,7 +7,7 @@ import * as Slider from '@radix-ui/react-slider'
 import { Input } from '@/components/input'
 
 export default function Donate () {
-  const [max, setMax] = useState(400)
+  const [max, setMax] = useState(500)
   const [min, setMin] = useState(10)
   const [amount, setAmount] = useState(min)
   const [emailVisible, setEmailVisible] = useState(false)
@@ -49,7 +49,8 @@ export default function Donate () {
                 <li>If your company does anything that can help our trip, <b>we’ll
                   make and share</b> videos of it (i.e. cleaning company
                   cleaning our car,
-                  mechanic tools or tent that we use)</li>
+                  mechanic tools or tent that we use)
+                </li>
               </ul>
             </div>
             <div className="col-span-1">
@@ -241,7 +242,11 @@ export default function Donate () {
       </div>
       <div
         className="type-selector select-none max-w-full rounded-2xl inline-flex gap-4 items-center justify-between font-display text-2xl md:text-3xl uppercase border-[5px] border-midnight-900 p-2 md:p-4">
-        <div onClick={() => setType('personal')}
+        <div onClick={() => {
+          setType('personal')
+          setMax(500)
+          setMin(10)
+        }}
              className={`p-3 px-6 w-full transition duration-200 cursor-pointer hover:text-dessert-200 ${type ===
              'personal' ? 'text-dessert-500' : 'text-dessert-500/20'}`}>
           PERSONAL
