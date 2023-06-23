@@ -85,7 +85,7 @@ export default function Donate () {
       </div>)
     }
 
-    if (amount < 25) {
+    if (amount < 15) {
 
       return (
         <div>
@@ -98,7 +98,7 @@ export default function Donate () {
         </div>
       )
     }
-    if (amount < 69) {
+    if (amount < 150) {
       return (
         <div>
 
@@ -237,7 +237,7 @@ export default function Donate () {
       </Slider.Root>
 
       <div
-        className="mx-auto prose prose-h1:text-3xl prose-invert text-dessert-500 prose-headings:text-dessert-500 prose-ul:list-inside leading-normal my-4 text-lg font-normal">
+        className="mx-auto prose prose-h1:text-3xl prose-ul:ps-0 prose-invert text-dessert-500 prose-headings:text-dessert-500 prose-ul:list-inside leading-normal my-4 text-lg font-normal">
         {tiers}
       </div>
       <div
