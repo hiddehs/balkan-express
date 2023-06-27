@@ -101,6 +101,7 @@ export default async function Support () {
                      height={20}></Image>
             </div>
             <p className="text-dessert-500 leading-normal">
+              The app designed for dates<br/>
               A match made in heaven, our loving friends support our adventure!
               Modern dating made human again download their app to find your
               match for this summer
