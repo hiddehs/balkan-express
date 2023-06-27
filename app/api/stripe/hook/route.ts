@@ -35,8 +35,12 @@ export async function POST (request: Request) {
       const checkoutSessionCompleted = event.data.object as Stripe.Checkout.Session
 
       const { data: donation } = await supabase.from('donations').
-        select().eq('payment_id', checkoutSessionCompleted.id)
+        update({ confirmed_payment: true }).
+        eq('payment_id', checkoutSessionCompleted.id).
+        select()
+
       if (donation && donation.length > 0) {
+
         const chats = await kv.smembers('tg.subscription.donations')
         for (const chat of chats) {
           await telegramBot.sendMessage(chat,

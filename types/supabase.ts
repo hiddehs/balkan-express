@@ -12,6 +12,7 @@ export interface Database {
       donations: {
         Row: {
           amount: number | null
+          confirmed_payment: boolean | null
           created_at: string | null
           email: string | null
           id: number
@@ -22,6 +23,7 @@ export interface Database {
         }
         Insert: {
           amount?: number | null
+          confirmed_payment?: boolean | null
           created_at?: string | null
           email?: string | null
           id?: number
@@ -32,6 +34,7 @@ export interface Database {
         }
         Update: {
           amount?: number | null
+          confirmed_payment?: boolean | null
           created_at?: string | null
           email?: string | null
           id?: number
