@@ -193,7 +193,7 @@ export default function Donate () {
     <form action={(data) => startTransition(async () => {
       await handleSubmit(data)
     })} onClick={() => setEmailVisible(true)}
-          className={`lg:rounded-2xl bg-midnight-800 select-none text-center w-full p-6 py-10 md:p-10 mt-8 md:rounded-lg inline-flex flex-col gap-4  ${isPending
+          className={`md:rounded-2xl bg-midnight-800 select-none text-center w-full p-6 py-10 md:p-10 mt-8 md:rounded-lg inline-flex flex-col gap-4  ${isPending
             ? 'opacity-40'
             : 'opacity-100'} `}>
 

@@ -87,13 +87,24 @@ export default async function Support () {
           {/*</div>*/}
           <div className="flex items-center gap-4">
             <div className="w-32 flex-shrink-0">
-              <Image src={'uncode.svg'} alt={'uncode logo'} width={100}
+              <Image src={'uncode.svg'} alt={'uncode logo'} width={90}
                      height={20}></Image>
             </div>
             <p className="text-dessert-500 leading-normal">
               Digital simplicity to bring your brand story to life. The no-code
               movement connects seamlessly with this to make our designs a
               reality. </p>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="w-32 flex-shrink-0">
+              <Image src={'breeze.svg'} alt={'uncode logo'} width={90}
+                     height={20}></Image>
+            </div>
+            <p className="text-dessert-500 leading-normal">
+              A match made in heaven, our loving friends support our adventure!
+              Modern dating made human again download their app to find your
+              match for this summer
+              ❤️ </p>
           </div>
         </div>
       </div>

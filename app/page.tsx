@@ -54,7 +54,7 @@ export default async function Home () {
         </div>
       </div>
       <div
-        className="space-y-2.5 lg:rounded-2xl bg-midnight-800 py-5 text-center">
+        className="space-y-2.5 md:rounded-2xl bg-midnight-800 py-5 text-center">
         <h1 className="whitespace-nowrap text-3xl px-4 tracking-wider">
           SUPPORTING FRIENDS
         </h1>
@@ -102,7 +102,7 @@ export default async function Home () {
         </div>
 
       </div>
-      <div className="py-6 text-center lg:rounded-2xl bg-midnight-800">
+      <div className="py-6 text-center md:rounded-2xl bg-midnight-800">
         <div className="font-display text-3xl px-4">
           OUR BIG BOY SPONSORS
         </div>
