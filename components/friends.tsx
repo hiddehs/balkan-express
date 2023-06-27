@@ -2,7 +2,6 @@
 import { supabase } from '@/lib/supabase'
 export const revalidate = 300
 
-
 export default async function Friends () {
   const { data: friends } = await supabase.from('friends').
     select()
