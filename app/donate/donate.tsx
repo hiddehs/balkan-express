@@ -98,7 +98,7 @@ export default function Donate () {
         </div>
       )
     }
-    if (amount < 150) {
+    if (amount < 34) {
       return (
         <div>
 
