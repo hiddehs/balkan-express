@@ -7,7 +7,7 @@ import * as Slider from '@radix-ui/react-slider'
 import { Input } from '@/components/input'
 
 export default function Donate () {
-  const [max, setMax] = useState(500)
+  const [max, setMax] = useState(251)
   const [min, setMin] = useState(10)
   const [amount, setAmount] = useState(min)
   const [emailVisible, setEmailVisible] = useState(false)
@@ -187,8 +187,6 @@ export default function Donate () {
 
       </p>
     </div>)
-
-    // return [amount > 50 ? '0' : '1']
   }, [type, amount])
 
   return (
@@ -202,10 +200,16 @@ export default function Donate () {
       <Image src={'/beer.png'} alt={'beer'} className="mx-auto mb-2" width={98}
              height={500}></Image>
 
-      <div
+      {amount < 251 || type !== 'personal' ? <div
         className="font-black text-center font-display text-6xl">€{amount}
-      </div>
-
+      </div> : null}
+      <Input name={'amount'} required={true}
+             value={amount}
+             onInput={(e) => setAmount(Number.parseInt(e.currentTarget.value))} type={'number'}
+             className={`border-dessert-500 border-4 text-center w-48 !inline-block h-auto mx-auto p-6 text-6xl font-display ring-dessert-500  transition duration-100 ${amount >= 251 && type === 'personal'
+               ? 'opacity-100'
+               : '!opacity-0 !h-0 p-0 overflow-hidden'}`}
+             placeholder={'Custom amount'}/>
 
       <Slider.Root
         onValueChange={(e) => setAmount(e[0])}
@@ -215,7 +219,7 @@ export default function Donate () {
         name={'amount'}
         max={max}
         min={min}
-        step={1}
+        step={2}
       >
         <Slider.Track
           className="bg-midnight-900 relative grow rounded-full h-4">
@@ -244,7 +248,7 @@ export default function Donate () {
         className="type-selector select-none max-w-full rounded-2xl inline-flex gap-4 items-center justify-between font-display text-2xl md:text-3xl uppercase border-[5px] border-midnight-900 p-2 md:p-4">
         <div onClick={() => {
           setType('personal')
-          setMax(500)
+          setMax(251)
           setMin(10)
         }}
              className={`p-3 px-6 w-full transition duration-200 cursor-pointer hover:text-dessert-200 ${type ===
@@ -273,7 +277,7 @@ export default function Donate () {
         disabled={isPending}
         className={'hover:bg-dessert-200 transition duration-200 hover:shadow shadow-lg leading-none shadow-black/60 font-display text-2xl md:text-3xl bg-dessert-500 rounded-2xl py-8 px-4 tracking-widest font-bold text-midnight-800 uppercase'}
         type="submit">
-        {isPending ? 'Loading' : 'Donate To The Boys!'}
+        {isPending ? 'Loading' : `Donate €${amount} To The Boys!`}
       </button>
     </form>
   )
