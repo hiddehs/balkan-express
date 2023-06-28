@@ -3,12 +3,12 @@ import { Metadata } from 'next'
 import { Button } from '@/components/button'
 import Friends from '@/components/friends'
 import Donate from '@/app/donate/donate'
+import { Suspense } from 'react'
 
 export const metadata: Metadata = {
   title: 'Support Us',
 }
 export default async function Support () {
-
   return (
     <div className="sections space-y-8 flex flex-col">
       <div className="px-8 py-8">
@@ -28,7 +28,11 @@ export default async function Support () {
           levels</Button>
         </div>
       </div>
-      <Donate/>
+      <Suspense fallback={
+        <div>Donate</div>
+      }>
+        <Donate/>
+      </Suspense>
       <div className="p-4">
         <h1
           className="text-3xl text-center leading-tight tracking-wider">

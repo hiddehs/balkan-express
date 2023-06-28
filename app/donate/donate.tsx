@@ -5,18 +5,25 @@ import { handleSubmit } from './actions'
 import Image from 'next/image'
 import * as Slider from '@radix-ui/react-slider'
 import { Input } from '@/components/input'
+import { useSearchParams } from 'next/navigation'
 
 export default function Donate () {
+  const searchParams = useSearchParams()
   const [max, setMax] = useState(251)
   const [min, setMin] = useState(10)
-  const [amount, setAmount] = useState(min)
+  const [amount, setAmount] = useState(
+    searchParams.has('donate')
+      ? Number.parseInt(searchParams.get('donate').toString())
+      : 50)
   const [emailVisible, setEmailVisible] = useState(false)
   const [email, setEmail] = useState('')
-  const [type, setType] = useState('personal')
+  const [type, setType] = useState(
+    searchParams.has('type') ? (searchParams.get('type') === 'b'
+      ? 'business'
+      : 'personal') : 'personal')
   let [isPending, startTransition] = useTransition()
 
   const tiers = useMemo<JSX.Element>(() => {
-
     if (type === 'business') {
       if (amount > 499) {
         return (<div>
@@ -91,10 +98,12 @@ export default function Donate () {
         <div>
           <h1>
             You will get: eternal thanks!
-          </h1>  <p>
-          We see every name and will cheers on you. 🥰 Your will be name on this
-          website! Just scroll down to see it.
-        </p>
+          </h1>
+          <p>
+            We see every name and will cheers on you. 🥰 Your will be name on
+            this
+            website! Just scroll down to see it.
+          </p>
         </div>
       )
     }
@@ -127,21 +136,19 @@ export default function Donate () {
         <h1>
           Your name on our car! €35+
         </h1>
-
         <p>
           Slurpy slurp! We will sticker your name (or anything you wish) on our
           car.
-          <ul>
-
-            <li>🚐 Your name on the car</li>
-            <li>🥘 A picture of us, eating your meal.</li>
-            <li>🔒 Access to our secret instagram for behind the scenes reels &
-              videos
-            </li>
-            <li>📮A physical postcard from a country on our route</li>
-            <li>⛽️ A picture of us and the gas station.</li>
-          </ul>
         </p>
+        <ul>
+          <li>🚐 Your name on the car</li>
+          <li>🥘 A picture of us, eating your meal.</li>
+          <li>🔒 Access to our secret instagram for behind the scenes reels &
+            videos
+          </li>
+          <li>📮A physical postcard from a country on our route</li>
+          <li>⛽️ A picture of us and the gas station.</li>
+        </ul>
       </div>)
     }
     if (amount < 250) {
@@ -174,18 +181,17 @@ export default function Donate () {
         ⭐️ All of the above. Plus we’ll return with 5 souvenirs. Wine from
         Georgia (Saperavi), Turkish Tea (Caykur), Albanian Fig Jam, German
         Marzipan and Croatian Olive Oil..
-        <ul>
-
-          <li>🚐 Your name on the car</li>
-          <li>🥘 A picture of us, eating your meal.</li>
-          <li>🔒 Access to our secret instagram for behind the scenes reels &
-            videos
-          </li>
-          <li>📮A physical postcard from a country on our route</li>
-          <li>⛽️ A picture of us and the gas station.</li>
-        </ul>
-
       </p>
+      <ul>
+
+        <li>🚐 Your name on the car</li>
+        <li>🥘 A picture of us, eating your meal.</li>
+        <li>🔒 Access to our secret instagram for behind the scenes reels &
+          videos
+        </li>
+        <li>📮A physical postcard from a country on our route</li>
+        <li>⛽️ A picture of us and the gas station.</li>
+      </ul>
     </div>)
   }, [type, amount])
 
@@ -205,8 +211,10 @@ export default function Donate () {
       </div> : null}
       <Input name={'amount'} required={true}
              value={amount}
-             onInput={(e) => setAmount(Number.parseInt(e.currentTarget.value))} type={'number'}
-             className={`border-dessert-500 border-4 text-center w-48 !inline-block h-auto mx-auto p-6 text-6xl font-display ring-dessert-500  transition duration-100 ${amount >= 251 && type === 'personal'
+             onInput={(e) => setAmount(Number.parseInt(e.currentTarget.value))}
+             type={'number'}
+             className={`border-dessert-500 border-4 text-center w-48 !inline-block h-auto mx-auto p-6 text-6xl font-display ring-dessert-500  transition duration-100 ${amount >=
+             251 && type === 'personal'
                ? 'opacity-100'
                : '!opacity-0 !h-0 p-0 overflow-hidden'}`}
              placeholder={'Custom amount'}/>
