@@ -13,14 +13,16 @@ export default function Donate () {
   const [min, setMin] = useState(10)
   const [amount, setAmount] = useState(
     searchParams.has('donate')
-      ? Number.parseInt(searchParams.get('donate') ?? "")
-      : 50)
+      ? Number.parseInt(searchParams.get('donate') ?? '')
+      : 10)
   const [emailVisible, setEmailVisible] = useState(false)
   const [email, setEmail] = useState('')
-  const [type, setType] = useState(
-    searchParams.has('type') ? (searchParams.get('type') === 'b'
-      ? 'business'
-      : 'personal') : 'personal')
+  const [type, setType] = useState('personal')
+  if (searchParams.get('type') === 'b') {
+    setType('business')
+    setMax(1200)
+    setMin(149)
+  }
   let [isPending, startTransition] = useTransition()
 
   const tiers = useMemo<JSX.Element>(() => {
