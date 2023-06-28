@@ -13,7 +13,7 @@ export default function Donate () {
   const [min, setMin] = useState(10)
   const [amount, setAmount] = useState(
     searchParams.has('donate')
-      ? Number.parseInt(searchParams.get('donate').toString())
+      ? Number.parseInt(searchParams.get('donate') ?? "")
       : 50)
   const [emailVisible, setEmailVisible] = useState(false)
   const [email, setEmail] = useState('')
