@@ -3,9 +3,9 @@ import { Button } from '@/components/button'
 import { Metadata } from 'next'
 import Friends from '@/components/friends'
 
-export const metadata: Metadata = {
-  title: 'Home',
-}
+// export const metadata: Metadata = {
+//   title: 'Home',
+// }
 
 export default async function Home () {
   return (
