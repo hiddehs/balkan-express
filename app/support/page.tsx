@@ -159,7 +159,7 @@ export default async function Support () {
 
             logo={<svg width="100" height="41" viewBox="0 0 150 41" fill="none"
                        xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#clip0_266_754)">
+              <g>
                 <path
                   d="M149.453 30.4194C149.453 28.2281 147.677 26.4517 145.485 26.4517C143.294 26.4517 141.518 28.2281 141.518 30.4194C141.518 32.6107 143.294 34.3871 145.485 34.3871C147.677 34.3871 149.453 32.6107 149.453 30.4194Z"
                   fill="white"/>
