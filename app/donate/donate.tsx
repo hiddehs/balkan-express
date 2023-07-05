@@ -9,7 +9,7 @@ import { useSearchParams } from 'next/navigation'
 
 export default function Donate () {
   const searchParams = useSearchParams()
-  const [max, setMax] = useState(251)
+  const [max, setMax] = useState(255)
   const [min, setMin] = useState(10)
   const [amount, setAmount] = useState(
     searchParams.has('donate')
@@ -208,7 +208,7 @@ export default function Donate () {
       <Image src={'/beer.png'} alt={'beer'} className="mx-auto mb-2" width={98}
              height={500}></Image>
 
-      {amount < 251 || type !== 'personal' ? <div
+      {amount < 255 || type !== 'personal' ? <div
         className="font-black text-center font-display text-6xl">€{amount}
       </div> : null}
       <Input name={'amount'} required={true}
@@ -216,7 +216,7 @@ export default function Donate () {
              onInput={(e) => setAmount(Number.parseInt(e.currentTarget.value))}
              type={'number'}
              className={`border-dessert-500 border-4 text-center w-48 !inline-block h-auto mx-auto p-6 text-6xl font-display ring-dessert-500  transition duration-100 ${amount >=
-             251 && type === 'personal'
+             255 && type === 'personal'
                ? 'opacity-100'
                : '!opacity-0 !h-0 p-0 overflow-hidden'}`}
              placeholder={'Custom amount'}/>
@@ -258,7 +258,7 @@ export default function Donate () {
         className="type-selector select-none max-w-full rounded-2xl inline-flex gap-4 items-center justify-between font-display text-2xl md:text-3xl uppercase border-[5px] border-midnight-900 p-2 md:p-4">
         <div onClick={() => {
           setType('personal')
-          setMax(251)
+          setMax(255)
           setMin(10)
         }}
              className={`p-3 px-6 w-full transition duration-200 cursor-pointer hover:text-dessert-200 ${type ===

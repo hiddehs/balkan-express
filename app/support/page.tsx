@@ -150,7 +150,8 @@ export default async function Support () {
 
             </div>
             <p className="text-dessert-500 leading-normal">
-              Do more, own less! 🌍 From a balkan beats party to cleaning your car for the perfect roadtrip. 🚍 Rent your supplies at www.biyu.world 💙
+              Do more, own less! 🌍 From a balkan beats party to cleaning your car for the perfect roadtrip. 🚍 Rent your supplies at <a
+              href="https://www.biyu.world/?ref=balkan-express" className="underline" target="_blank">www.biyu.world</a> 💙
             </p>
           </div>
         </div>
