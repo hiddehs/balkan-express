@@ -34,7 +34,7 @@ export default async function Support () {
       }>
         <Donate/>
       </Suspense>
-      <div className="">
+      <div className="" id={"bigboys"}>
        <div className="p-4">
          <h1
            className="text-3xl text-center leading-tight tracking-wider">

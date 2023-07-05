@@ -106,7 +106,6 @@ export default async function Home () {
           OUR BIG BOY SPONSORS
         </div>
 
-
         <div
           className="flex items-center justify-center flex-wrap gap-8 md:p-8 p-4 md:pb-0">
           <Image src={'breeze.svg'} alt={'breeze logo'} width={90}
@@ -211,6 +210,8 @@ export default async function Home () {
               </clipPath>
             </defs>
           </svg>
+        </div>
+        <div className="w-full flex"><Button size={"sm"} href={'/support#bigboys'}> Read more</Button>
         </div>
         <div>
 
