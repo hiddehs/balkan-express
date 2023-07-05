@@ -66,7 +66,7 @@ export default async function Support () {
               movement connects seamlessly with this to make our designs a
               reality. </p>
           </div>
-          <div className="flex items-center gap-4">
+          <a href="https://breeze.social/en" target={"_blank"}  className="flex hover:opacity-80 items-center gap-4">
             <div className="w-32 flex-shrink-0">
               <Image src={'breeze.svg'} alt={'uncode logo'} width={90}
                      height={20}></Image>
@@ -77,8 +77,8 @@ export default async function Support () {
               Modern dating made human again download their app to find your
               match for this summer
               ❤️ </p>
-          </div>
-          <div className="flex items-center gap-4">
+          </a>
+          <a href={"https://visualradioassist.live?ref=balkan-express"} target={"_blank"}  className="flex hover:opacity-80 items-center gap-4">
             <div className="w-32 flex-shrink-0">
               <svg width="100" height="32" viewBox="0 0 100 32" fill="none"
                    xmlns="http://www.w3.org/2000/svg">
@@ -111,7 +111,7 @@ export default async function Support () {
               to help you supercharge your onair live visual radio car
               performance.
             </p>
-          </div> <div className="flex items-center gap-4">
+          </a> <a href={"https://weticket.com?ref=balkan-express"} target={"_blank"} className="flex hover:opacity-80 items-center gap-4">
             <div className="w-32 flex-shrink-0">
               <svg width="100" height="50" viewBox="0 0 2177 582" fill="none"
                    xmlns="http://www.w3.org/2000/svg">
@@ -142,7 +142,7 @@ export default async function Support () {
             </div>
             <p className="text-dessert-500 leading-normal">Whether you want to sell tickets for your underground club in Nijmegen or run a coffee festival in Turkey. WeTicket has you covered. When you say Tickets, we say WeTicket!
             </p>
-          </div><div className="flex items-center gap-4">
+          </a><div className="flex items-center gap-4">
             <div className="w-32 flex-shrink-0">
               <Image src={'biyu.svg'} alt={'biyu logo'}
                      width={90}
