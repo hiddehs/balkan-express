@@ -5,6 +5,36 @@ import { supabase } from '@/lib/supabase'
 import Negotiator from 'negotiator'
 import { stripe } from '@/lib/stripe'
 import { Stripe } from 'stripe'
+import openai from '@/lib/openai'
+
+export async function generateDavinciNames (email: string): Promise<string[]> {
+  const name = email.split('@')[0]
+  const response = await openai.createCompletion({
+    model: 'text-davinci-003',
+    prompt: `You are an aspirational comedian and a very good art director, we have people sponsoring our car. They put their names on the car. Can you come up with different variation of their name, or semi-relevant other names to suggest to them that they can put as a sticker on the car? The car is going on a big road trip journey.
+Seed words: ${name}
+Do not include any explanations, only provide a RFC8259 compliant JSON response following this format without deviation. Make sure to absolutely not generate more than 5 unique names.`,
+    temperature: 0.4,
+    max_tokens: 120,
+    top_p: 1.0,
+    frequency_penalty: 0.0,
+    presence_penalty: 0.0,
+  })
+
+  try {
+    if (response.data.choices.length > 0) {
+      console.log(response.data.choices)
+      const names = JSON.parse(response.data.choices[0].text).names
+      if (names) {
+        return names
+      }
+    }
+  } catch (e) {
+    console.error(e)
+  }
+  return []
+
+}
 
 export async function handleSubmit (data: FormData) {
 
@@ -65,24 +95,13 @@ export async function handleSubmit (data: FormData) {
     return 'failed'
   }
 
-  // const payment = await mollie.payments.create({
-  //   amount: {
-  //     value: `${data.get('amount')?.toString() ?? 0}.00`,
-  //     currency: 'EUR',
-  //   },
-  //   webhookUrl: host?.includes('localhost')
-  //     ? 'https://6eb2-217-123-13-172.eu.ngrok.io/api/mol/hook'
-  //     : `https://${host}/api/mol/hook`,
-  //   description: `Balkan Express Donation of €${data.get('amount')},-`,
-  //   redirectUrl: `https://${host}/thanks`,
-  // })
   console.debug('Creating donation')
   const { data: donation, error } = await supabase.from('donations').insert({
     amount: Number.parseInt(data.get('amount')?.toString() ?? '0'),
     payment_id: payment.id,
     type: data.get('type')?.toString() ?? 'default',
+    name: data.get('name')?.toString() ?? 'no name',
     email: payment.customer_email,
-    name: null,
     locale: locale,
   }).select()
   if (error) {
