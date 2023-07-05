@@ -34,15 +34,17 @@ export default async function Support () {
       }>
         <Donate/>
       </Suspense>
-      <div className="p-4">
-        <h1
-          className="text-3xl text-center leading-tight tracking-wider">
-          BIG BOY SPONSORS </h1>
-        <p
-          className="mt-2 px-4 text-center leading-normal">
-          From tents to tools, from euros to euphoria. Thanks to these guys.
-        </p>
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-4 my-8">
+      <div className="">
+       <div className="p-4">
+         <h1
+           className="text-3xl text-center leading-tight tracking-wider">
+           BIG BOY SPONSORS </h1>
+         <p
+           className="mt-2 px-4 text-center leading-normal">
+           From tents to tools, from euros to euphoria. Thanks to these guys.
+         </p>
+       </div>
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-6 my-8">
 
           <BigBoy href={'https://uncode.nl/?ref=balkan-express.nl'}
                   description={<p>
