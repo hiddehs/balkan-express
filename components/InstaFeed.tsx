@@ -4,7 +4,9 @@ import React from 'react'
 import Link from 'next/link'
 
 const getFeed = async () => {
-  const res = await fetch('https://feeds.behold.so/hUB4pg1sP2x7HiXNn7ht')
+  const res = await fetch('https://feeds.behold.so/hUB4pg1sP2x7HiXNn7ht', {next:{
+    revalidate: 3600
+    }})
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data')
@@ -15,9 +17,7 @@ const getFeed = async () => {
 }
 
 export default async function InstaFeed () {
-
   const data = await getFeed()
-
   return (
     <div className="flex gap-2 flex-col px-4 overflow-hidden">
 
