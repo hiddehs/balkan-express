@@ -14,6 +14,8 @@ export default function Page () {
               @balkanexpress2023</a>
             <br/>
             <a className="underline">Email: info[at]balkan-express.nl</a>
+            <br/>
+            <a className="underline" href="https://github.com/hiddehs/balkan-express" target="_blank">Github: balkan-express</a>
           </div>
           <div className="mt-4">
             <p className="font-semibold">Balkan Express Tour</p>
