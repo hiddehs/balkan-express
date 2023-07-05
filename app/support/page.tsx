@@ -25,7 +25,7 @@ export default async function Support () {
           Why Netflix if you can see us getting tired and celebrate our
           victories. Become part of our roadtrip soap.
         </p>
-        <div className="w-full flex"><Button href={'/support'}> See support
+        <div className="w-full flex"><Button href={'/support#donate'}> See support
           levels</Button>
         </div>
       </div>
