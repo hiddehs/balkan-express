@@ -1,12 +1,10 @@
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
-export const revalidate = 0
+export const revalidate = 60
 
 export default async function Friends () {
-  const revalidate = 0
   const { data: friends } = await supabase.from('friends').
-    select()
-  console.log(friends)
+    select().range(0, 10000)
   const friendsString = friends?.map(f => f.name).join(', ') ?? ''
   return (
     <div>
