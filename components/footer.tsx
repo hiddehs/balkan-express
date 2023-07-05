@@ -43,7 +43,7 @@ export const Footer: React.FC<FooterProps> = React.memo(
           })}
 
         </div>
-        <div className="text-center text-xs font-mono text-dessert-800/20 hover:text-dessert-500">Balkan Express Tour © 2023</div>
+        <div className="text-center text-xs font-mono text-dessert-800/20 hover:text-dessert-500">Balkan Express Tour © 2023 – <Link target="_blank" className="hover:underline" href={"https://github.com/hiddehs/balkan-express"}>Github</Link> </div>
       </footer>
     )
   },
