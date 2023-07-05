@@ -25,7 +25,7 @@ export default function Donate () {
   }
   let [isPending, startTransition] = useTransition()
 
-  let [step, setStep] = useState(0)
+  let [step, setStep] = useState(1)
 
   const tiers = useMemo<JSX.Element>(() => {
     if (type === 'business') {
@@ -224,13 +224,15 @@ export default function Donate () {
       <div
         className={`flex-col gap-4 ${step === 1 ? 'inline-flex' : 'hidden'}`}>
         <div
-          className="font-black text-center font-display text-4xl my-4">What is
+          className="font-black text-center font-display text-4xl mt-4 mb-2">What is
           your name?
         </div>
+        <p className="text-dessert-500 mb-4">We'll put this name on the car ✨</p>
         {names.length > 0 ?
           <div className="flex gap-4 flex-wrap items-center justify-center">
             {names.map(n => {
               return (<div
+                key={n}
                 onClick={() => setName(n)}
                 className={`${name === n
                   ? 'bg-dessert-500'
@@ -241,7 +243,7 @@ export default function Donate () {
           :
 
           <p className="text-dessert-500/40">
-            failed to generate 5 funny names to put on our car...
+            failed to generate 5 names to put on our car...
           </p>
         }
 
@@ -250,13 +252,13 @@ export default function Donate () {
                type={'text'}
                value={name}
                className={`border-dessert-500 border-2 ring-dessert-500 transition duration-100`}
-               placeholder={'Your name'}/>
+               placeholder={'Name'}/>
         <div>
 
         </div>
         <button
           type={'submit'}
-          disabled={isPending}
+          disabled={isPending || name.length < 1}
           className={'hover:bg-dessert-200 transition duration-200 hover:shadow shadow-lg leading-none shadow-black/60 font-display text-2xl md:text-3xl bg-dessert-500 rounded-2xl py-8 px-4 tracking-widest font-bold text-midnight-800 uppercase'}>
           {isPending ? 'Loading' : `Donate €${amount} To The Boys!`}
         </button>
