@@ -64,7 +64,7 @@ export default async function Home () {
       <div className="bg-midnight-500 p-7">
         <div className="">
           <div className="flex justify-center pr-1 pb-2">
-            <div className="h-44 w-64 shrink-0 bg-center bg-cover shadow"
+            <div className="h-44 w-64 shrink-0 bg-center bg-cover"
                  style={{ backgroundImage: 'url(\'/nogps.png\')' }}/>
           </div>
         </div>
@@ -75,7 +75,7 @@ export default async function Home () {
         <p
           className="mt-3.5 text-center leading-normal">
           We succeeded on doing that for 20 minutes because our phone
-          was empty in France. So now we do the same, but for 24 days.
+          died in France. So now we do the same, but for 24 days.
         </p>
         <div className="w-full flex">
           <Button href={'/live'}>See our
