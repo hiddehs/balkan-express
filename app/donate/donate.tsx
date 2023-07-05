@@ -244,14 +244,15 @@ export default function Donate () {
           :
 
           <p className="text-dessert-500/40">
-            failed to generate 5 names to put on our car...
+            failed to generate 5 names to put on our car... you can still continue with your custom name:
           </p>
         }
-
         <Input name={'name'} required={true}
-               autoComplete={'fname'}
-               type={'text'}
                value={name}
+               autoComplete={'fname'}
+               onInput={(e) => setName(
+                 (e.currentTarget.value))}
+               type={'text'}
                className={`border-dessert-500 border-2 ring-dessert-500 transition duration-100`}
                placeholder={'Name'}/>
         <div>
