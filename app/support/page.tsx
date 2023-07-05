@@ -139,7 +139,8 @@ export default async function Support () {
             we say WeTicket!
           </p>
         </a>
-          <div className="flex items-center gap-4">
+          <a  href="https://www.biyu.world/?ref=balkan-express"
+              target="_blank" className="flex items-center gap-4 hover:opacity-80">
             <div className="w-32 flex-shrink-0">
               <Image src={'biyu.svg'} alt={'biyu logo'}
                      width={90}
@@ -152,7 +153,7 @@ export default async function Support () {
               href="https://www.biyu.world/?ref=balkan-express"
               className="underline" target="_blank">www.biyu.world</a> 💙
             </p>
-          </div>
+          </a>
         </div>
       </div>
       <div className="p-4">
