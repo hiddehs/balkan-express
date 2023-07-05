@@ -44,7 +44,7 @@ export async function POST (request: Request) {
         const chats = await kv.smembers('tg.subscription.donations')
         for (const chat of chats) {
           await telegramBot.sendMessage(chat,
-            `🎉 Donation of €${donation[0].amount} for *${donation[0].type}* received from 📧 *${donation[0].email}* 🌎*${donation[0].locale}*!`,
+            `🎉 Donation of €${donation[0].amount} for *${donation[0].type}* received from 📧 *${donation[0].email}* 🌎*${donation[0].locale}* Name: *${donation[0].name}* (maybe auto-gen)!`,
             { parse_mode: 'Markdown' })
         }
       }

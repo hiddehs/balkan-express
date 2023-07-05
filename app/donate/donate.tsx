@@ -227,7 +227,7 @@ export default function Donate () {
           className="font-black text-center font-display text-4xl mt-4 mb-2">What is
           your name?
         </div>
-        <p className="text-dessert-500 mb-4">We'll put this name on the car ✨</p>
+        <p className="text-dessert-500 mb-4">We&apos;ll put this name on the car ✨</p>
         {names.length > 0 ?
           <div className="flex gap-4 flex-wrap items-center justify-center">
             {names.map(n => {
