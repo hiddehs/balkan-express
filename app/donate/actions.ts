@@ -24,7 +24,7 @@ Do not include any explanations, only provide a RFC8259 compliant JSON response 
   try {
     if (response.data.choices.length > 0) {
       console.log(response.data.choices)
-      const names = JSON.parse(response.data.choices[0].text).names
+      const names = JSON.parse(response.data.choices[0].text as string).names
       if (names) {
         return names
       }
