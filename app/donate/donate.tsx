@@ -25,7 +25,7 @@ export default function Donate () {
   }
   let [isPending, startTransition] = useTransition()
 
-  let [step, setStep] = useState(1)
+  let [step, setStep] = useState(0)
 
   const tiers = useMemo<JSX.Element>(() => {
     if (type === 'business') {
@@ -199,7 +199,7 @@ export default function Donate () {
     </div>)
   }, [type, amount])
   const [names, setNames] = useState(
-    ['HiddeHut', 'HiddeTrack', 'HiddeFare', 'HiddeRace', 'HiddeCoast'])
+    [])
   const [name, setName] = useState('')
   const generateNames = async () => {
     if (email.length < 1) {
