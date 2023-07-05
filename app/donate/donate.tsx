@@ -198,7 +198,7 @@ export default function Donate () {
       </ul>
     </div>)
   }, [type, amount])
-  const [names, setNames] = useState([])
+  const [names, setNames] = useState<string[]>([])
   const [name, setName] = useState('')
   const generateNames = async () => {
     if (email.length < 1) {
