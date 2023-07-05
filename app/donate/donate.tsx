@@ -198,8 +198,7 @@ export default function Donate () {
       </ul>
     </div>)
   }, [type, amount])
-  const [names, setNames] = useState(
-    [])
+  const [names, setNames] = useState([])
   const [name, setName] = useState('')
   const generateNames = async () => {
     if (email.length < 1) {
@@ -224,10 +223,12 @@ export default function Donate () {
       <div
         className={`flex-col gap-4 ${step === 1 ? 'inline-flex' : 'hidden'}`}>
         <div
-          className="font-black text-center font-display text-4xl mt-4 mb-2">What is
+          className="font-black text-center font-display text-4xl mt-4 mb-2">What
+          is
           your name?
         </div>
-        <p className="text-dessert-500 mb-4">We&apos;ll put this name on the car ✨</p>
+        <p className="text-dessert-500 mb-4">We&apos;ll put this name on the car
+          ✨</p>
         {names.length > 0 ?
           <div className="flex gap-4 flex-wrap items-center justify-center">
             {names.map(n => {
