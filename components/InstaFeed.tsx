@@ -36,7 +36,7 @@ export default async function InstaFeed () {
         const time = new Date(img.timestamp)
         return (
           <Link href={img.permalink} target="_blank" key={img.id}
-                className="relative active:opacity-70 overflow-hidden">
+                className="relative active:opacity-70 overflow-hidden hover:opacity-95">
             <div className="flex gap-4">
               <div
                 title={`${img.caption}`}
