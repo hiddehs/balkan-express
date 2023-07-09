@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useState, useTransition } from 'react'
-import { generateDavinciNames, handleSubmit } from './actions'
+import { handleSubmit } from './actions'
 import Image from 'next/image'
 import * as Slider from '@radix-ui/react-slider'
 import { Input } from '@/components/input'
@@ -204,8 +204,10 @@ export default function Donate () {
     if (email.length < 1) {
       return
     }
-    setName(email.split('@')[0])
-    const names = await generateDavinciNames(email)
+    const nameSplit = email.split('@')[0]
+    setName(nameSplit)
+    const names = [nameSplit]
+    // const names = await generateDavinciNames(email)
     setNames(names)
     setStep(1)
   }
@@ -244,7 +246,8 @@ export default function Donate () {
           :
 
           <p className="text-dessert-500/40">
-            failed to generate 5 names to put on our car... you can still continue with your custom name:
+            failed to generate 5 names to put on our car... you can still
+            continue with your custom name:
           </p>
         }
         <Input name={'name'} required={true}
